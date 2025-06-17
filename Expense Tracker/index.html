@@ -2,66 +2,178 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expense Tracker</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Track your income and expenses with this simple, clean expense tracker application">
+    <meta name="keywords" content="expense tracker, budget, finance, money management, personal finance">
+    <meta name="author" content="Expense Tracker">
+    <title>Expense Tracker | Manage Your Personal Finances</title>
+    <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
-        rel="stylesheet" />
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Expense Tracker</h1>
-
-        <div class="balance-container">
-            <h2>Your Balance</h2>
-            <h1 id="balance">$0.00</h1>
-
-            <div class="summary">
-                <div class="income">
-                    <h3>Income</h3>
-                    <p id="income-amount">$0.00</p>
-                </div>
-                <div class="expenses">
-                    <h3>Expenses</h3>
-                    <p id="expense-amount">$0.00</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div class="transaction-container">
-                <h2>Transactions</h2>
-                <ul id="transaction-list">
-                    <!-- TRANSACTIONS WILL BE INSERTED HERE -->
+    <header class="header">
+        <div class="header__container container">
+            <a href="/" class="header__logo">
+                <h1 class="header__title">Expense<span class="header__title--highlight">Tracker</span></h1>
+            </a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#features" class="nav__link">Features</a></li>
+                    <li class="nav__item"><a href="#how-it-works" class="nav__link">How It Works</a></li>
+                    <li class="nav__item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
+                <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero__container container">
+                <div class="hero__content">
+                    <h2 class="hero__title">Take Control of Your Finances</h2>
+                    <p class="hero__description">Track your income and expenses with our simple, intuitive expense
+                        tracker application.</p>
+                    <a href="#app" class="hero__cta button button--primary">Get Started</a>
+                </div>
+                <div class="hero__image">
+                    <img src="images/finance-illustration.svg" alt="Finance tracking illustration" class="hero__img"
+                        loading="lazy">
+                </div>
             </div>
+        </section>
 
-            <div class="form-container">
-                <h2>Add Transaction</h2>
+        <section id="app" class="app-section">
+            <div class="container">
+                <h2 class="section__title">Expense Tracker</h2>
+                <p class="section__subtitle">Track your financial transactions with ease</p>
 
-                <form id="transaction-form">
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" id="description" placeholder="Enter description..." required />
+                <div class="app__container">
+                    <div class="balance-container">
+                        <h3 class="balance__title">Your Balance</h3>
+                        <p id="balance" class="balance__amount">$0.00</p>
+                        <div class="summary">
+                            <div class="summary__item summary__item--income">
+                                <h4 class="summary__title">Income</h4>
+                                <p id="income-amount" class="summary__amount">$0.00</p>
+                            </div>
+                            <div class="summary__item summary__item--expenses">
+                                <h4 class="summary__title">Expenses</h4>
+                                <p id="expense-amount" class="summary__amount">$0.00</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <input type="number" id="amount" placeholder="Enter amount..." required />
-                        <small>Use negative (-) for expenses</small>
-                    </div>
+                    <div class="app__content">
+                        <section class="transaction-container">
+                            <h3 class="transaction__title">Transactions</h3>
+                            <ul id="transaction-list" class="transaction__list">
+                                <!-- TRANSACTIONS WILL BE INSERTED HERE -->
+                            </ul>
+                        </section>
 
-                    <button type="submit">Add Transaction</button>
-                </form>
+                        <section class="form-container">
+                            <h3 class="form__title">Add Transaction</h3>
+                            <form id="transaction-form" class="form">
+                                <div class="form__group">
+                                    <label for="description" class="form__label">Description</label>
+                                    <input type="text" id="description" class="form__input"
+                                        placeholder="Enter description..." required>
+                                </div>
+                                <div class="form__group">
+                                    <label for="amount" class="form__label">Amount</label>
+                                    <input type="number" id="amount" class="form__input" placeholder="Enter amount..."
+                                        required>
+                                    <small class="form__hint">(Use negative (-) for expenses)</small>
+                                </div>
+                                <button type="submit" class="form__submit button button--primary">Add
+                                    Transaction</button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section__title">Key Features</h2>
+                <div class="features__grid">
+                    <article class="feature">
+                        <i class="feature__icon fas fa-chart-line"></i>
+                        <h3 class="feature__title">Real-time Tracking</h3>
+                        <p class="feature__description">See your balance update instantly with every transaction you
+                            add.</p>
+                    </article>
+                    <article class="feature">
+                        <i class="feature__icon fas fa-calculator"></i>
+                        <h3 class="feature__title">Income/Expense Breakdown</h3>
+                        <p class="feature__description">Clear visualization of your income versus expenses.</p>
+                    </article>
+                    <article class="feature">
+                        <i class="feature__icon fas fa-mobile-alt"></i>
+                        <h3 class="feature__title">Responsive Design</h3>
+                        <p class="feature__description">Works perfectly on all devices from desktop to mobile.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__about">
+                    <h3 class="footer__title">About ExpenseTracker</h3>
+                    <p class="footer__text">A simple, intuitive tool to help you manage your personal finances and track
+                        your spending habits.</p>
+                </div>
+                <div class="footer__links">
+                    <h3 class="footer__title">Quick Links</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item"><a href="#app" class="footer__link">Tracker</a></li>
+                        <li class="footer__item"><a href="#features" class="footer__link">Features</a></li>
+                        <li class="footer__item"><a href="#how-it-works" class="footer__link">How It Works</a></li>
+                        <li class="footer__item"><a href="#contact" class="footer__link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__contact" id="contact">
+                    <h3 class="footer__title">Contact Us</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item"><i class="fas fa-envelope"></i> contact@expensetracker.com</li>
+                        <li class="footer__item"><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    </ul>
+                </div>
+                <div class="footer__social">
+                    <h3 class="footer__title">Follow Us</h3>
+                    <div class="social__links">
+                        <a href="#" class="social__link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social__link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social__link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social__link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; <span id="year"></span> ExpenseTracker. All rights reserved.</p>
             </div>
         </div>
-    </div>
+    </footer>
 
-
+    <script src="index.js"></script>
+    
+    
 </body>
-<script src="index.js"></script>
 
 </html>

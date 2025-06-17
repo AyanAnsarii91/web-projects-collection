@@ -2,74 +2,215 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Form</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Contact | Ayan Ansari Portfolio</title>
+    <meta name="description"
+        content="Get in touch with Ayan Ansari for collaborations, projects, or general inquiries.">
+    <meta name="keywords" content="Ayan Ansari, developer portfolio, contact, web development, front-end developer">
+    <meta name="author" content="Ayan Ansari">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph (optional, tweak for real deployment) -->
+    <meta property="og:title" content="Contact | Ayan Ansari Portfolio">
+    <meta property="og:description" content="Reach out to Ayan Ansari for collaborations, projects, or inquiries.">
+    <meta property="og:type" content="website">
+    <!-- Favicon placeholder -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="form-container">
-            <h1>Get in Touch</h1>
-            <p>Fill out the form below to contact us</p>
+    <!-- Header + Navbar -->
+    <header class="navbar" role="banner">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__brand" aria-label="Homepage">
+                <!-- Replace with your logo/image or text logo -->
+                <img src="logo.png" alt="Ayan Ansari Logo" class="navbar__logo">
+                <!-- Or simply: <span class="navbar__logo-text">Ayan Ansari</span> -->
+            </a>
+            <button class="navbar__toggle" aria-controls="navbar-menu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar__toggle-icon"><i class="fas fa-bars" aria-hidden="true"></i></span>
+            </button>
+            <nav class="navbar__menu" id="navbar-menu" role="navigation">
+                <ul class="navbar__list">
+                    <li class="navbar__item"><a href="index.html" class="navbar__link">Home</a></li>
+                    <li class="navbar__item"><a href="about.html" class="navbar__link">About</a></li>
+                    <li class="navbar__item"><a href="projects.html" class="navbar__link">Projects</a></li>
+                    <li class="navbar__item"><a href="contact.html"
+                            class="navbar__link navbar__link--active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-            <form>
-                <div class="input-group">
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Name" required />
-                    </div>
+    <!-- Main Content -->
+    <main class="main-content" role="main">
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="contact-section__container">
+                <h1 class="contact-section__title">Get in Touch</h1>
+                <p class="contact-section__subtitle">Fill out the form below to connect with me.</p>
+                <div class="contact-section__content">
+                    <!-- Contact Form -->
+                    <form action="https://example.com/form-handler" method="POST" class="contact-form" novalidate>
+                        <fieldset class="contact-form__fieldset">
+                            <legend class="sr-only">Contact form</legend>
+                            <!-- Name -->
+                            <div class="contact-form__group">
+                                <label for="name" class="contact-form__label">
+                                    <i class="fas fa-user" aria-hidden="true"></i>
+                                    <span class="sr-only">Name</span>
+                                </label>
+                                <input type="text" id="name" name="name" class="contact-form__input"
+                                    placeholder="Your Name" required aria-required="true">
+                            </div>
+                            <!-- Email -->
+                            <div class="contact-form__group">
+                                <label for="email" class="contact-form__label">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                    <span class="sr-only">Email</span>
+                                </label>
+                                <input type="email" id="email" name="email" class="contact-form__input"
+                                    placeholder="Your Email" required aria-required="true">
+                            </div>
+                            <!-- Phone (optional) -->
+                            <div class="contact-form__group">
+                                <label for="phone" class="contact-form__label">
+                                    <i class="fas fa-phone" aria-hidden="true"></i>
+                                    <span class="sr-only">Phone (optional)</span>
+                                </label>
+                                <input type="tel" id="phone" name="phone" class="contact-form__input"
+                                    placeholder="Phone (optional)">
+                            </div>
+                            <!-- Subject -->
+                            <div class="contact-form__group">
+                                <label for="subject" class="contact-form__label">
+                                    <i class="fas fa-tag" aria-hidden="true"></i>
+                                    <span class="sr-only">Subject</span>
+                                </label>
+                                <input type="text" id="subject" name="subject" class="contact-form__input"
+                                    placeholder="Subject" required aria-required="true">
+                            </div>
+                            <!-- Message -->
+                            <div class="contact-form__group contact-form__group--textarea">
+                                <label for="message" class="contact-form__label">
+                                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                                    <span class="sr-only">Message</span>
+                                </label>
+                                <textarea id="message" name="message" class="contact-form__textarea"
+                                    placeholder="Your Message" rows="5" required aria-required="true"></textarea>
+                            </div>
+                        </fieldset>
+                        <button type="submit" class="contact-form__button">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </form>
 
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" required />
-                    </div>
-
-                    <div class="input-field">
-                        <i class="fas fa-phone"></i>
-                        <input type="tel" placeholder="Phone (optional)" />
-                    </div>
-
-                    <div class="input-field">
-                        <i class="fas fa-tag"></i>
-                        <input type="text" placeholder="Subject" required />
-                    </div>
-                </div>
-
-                <div class="message-field">
-                    <i class="fas fa-message"></i>
-                    <textarea placeholder="Your Message" required></textarea>
-                </div>
-
-                <button type="submit">
-                    <div class="btn-content">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </div>
-                </button>
-            </form>
-
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>123 Main Street, City, Country</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>contact@example.com</span>
-                </div>
-
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+1 234 567 8900</span>
+                    <!-- Contact Info -->
+                    <aside class="contact-info" aria-labelledby="contact-info-title">
+                        <h2 id="contact-info-title" class="contact-info__title">Contact Information</h2>
+                        <ul class="contact-info__list">
+                            <li class="contact-info__item">
+                                <i class="fas fa-map-marker-alt contact-info__icon" aria-hidden="true"></i>
+                                <span class="contact-info__text">356 Bawdiya, A.B. Road, Nepali Gali No. 4, Dewas,
+                                    Madhya Pradesh, India</span>
+                            </li>
+                            <li class="contact-info__item">
+                                <i class="fas fa-envelope contact-info__icon" aria-hidden="true"></i>
+                                <a href="mailto:your.email@example.com"
+                                    class="contact-info__text">your.email@example.com</a>
+                            </li>
+                            <li class="contact-info__item">
+                                <i class="fas fa-phone contact-info__icon" aria-hidden="true"></i>
+                                <a href="tel:+911234567890" class="contact-info__text">+91 12345 67890</a>
+                            </li>
+                            <!-- You can add more items: LinkedIn, GitHub, etc. -->
+                        </ul>
+                    </aside>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__container">
+            <!-- About Section -->
+            <section class="footer__section footer__section--about" aria-labelledby="footer-about-title">
+                <h3 id="footer-about-title" class="footer__title">About</h3>
+                <p class="footer__text">
+                    Passionate about crafting intuitive user experiences and scalable web apps. Currently diving into
+                    AI-powered front-end tooling and real-time interfaces.
+                </p>
+            </section>
+            <!-- Quick Links -->
+            <nav class="footer__section footer__section--links" aria-labelledby="footer-links-title">
+                <h3 id="footer-links-title" class="footer__title">Quick Links</h3>
+                <ul class="footer__list">
+                    <li><a href="index.html" class="footer__link">Home</a></li>
+                    <li><a href="about.html" class="footer__link">About</a></li>
+                    <li><a href="projects.html" class="footer__link">Projects</a></li>
+                    <li><a href="contact.html" class="footer__link">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Contact Section in Footer -->
+            <section class="footer__section footer__section--contact" aria-labelledby="footer-contact-title">
+                <h3 id="footer-contact-title" class="footer__title">Contact</h3>
+                <ul class="footer__list">
+                    <li>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:your.email@example.com" class="footer__link">your.email@example.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <a href="tel:+911234567890" class="footer__link">+91 12345 67890</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span class="footer__text">Dewas, Madhya Pradesh, India</span>
+                    </li>
+                </ul>
+            </section>
+            <!-- Social Media Placeholders -->
+            <section class="footer__section footer__section--social" aria-labelledby="footer-social-title">
+                <h3 id="footer-social-title" class="footer__title">Follow Me</h3>
+                <ul class="footer__social-list">
+                    <li>
+                        <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"
+                                aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__social-link" aria-label="GitHub"><i class="fab fa-github"
+                                aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"
+                                aria-hidden="true"></i></a>
+                    </li>
+                    <!-- Add or remove as needed -->
+                </ul>
+            </section>
         </div>
-    </div>
+        <div class="footer__bottom">
+            <p class="footer__copyright">
+                &copy; <time datetime="2025">2025</time> Ayan Ansari. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Minimal JS for Navbar Toggle -->
+    
+
+    <script src="index.js"></script>
+
 </body>
 
 </html>

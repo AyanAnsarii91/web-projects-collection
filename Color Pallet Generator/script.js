@@ -1,23 +1,24 @@
 const generateBtn = document.getElementById("generate-btn");
-const paletteContainer = document.querySelector(".palette-container");
+const paletteContainer = document.querySelector(".palette-section__grid"); // CORRECT selector
 
 generateBtn.addEventListener("click", generatePalette);
 
 paletteContainer.addEventListener("click", function (e) {
-  if (e.target.classList.contains("copy-btn")) {
+  if (e.target.classList.contains("color-box__copy-btn")) {
     const hexValue = e.target.previousElementSibling.textContent;
-
     navigator.clipboard
       .writeText(hexValue)
       .then(() => showCopySuccess(e.target))
       .catch((err) => console.log(err));
-  } else if (e.target.classList.contains("color")) {
+  } else if (e.target.classList.contains("color-box__color")) {
     const hexValue =
-      e.target.nextElementSibling.querySelector(".hex-value").textContent;
+      e.target.nextElementSibling.querySelector(".color-box__hex").textContent;
     navigator.clipboard
       .writeText(hexValue)
       .then(() =>
-        showCopySuccess(e.target.nextElementSibling.querySelector(".copy-btn"))
+        showCopySuccess(
+          e.target.nextElementSibling.querySelector(".color-box__copy-btn")
+        )
       )
       .catch((err) => console.log(err));
   }
@@ -26,9 +27,7 @@ paletteContainer.addEventListener("click", function (e) {
 function showCopySuccess(element) {
   element.classList.remove("far", "fa-copy");
   element.classList.add("fas", "fa-check");
-
   element.style.color = "#48bb78";
-
   setTimeout(() => {
     element.classList.remove("fas", "fa-check");
     element.classList.add("far", "fa-copy");
@@ -38,18 +37,15 @@ function showCopySuccess(element) {
 
 function generatePalette() {
   const colors = [];
-
   for (let i = 0; i < 5; i++) {
     colors.push(generateRandomColor());
   }
-
   updatePaletteDisplay(colors);
 }
 
 function generateRandomColor() {
   const letters = "0123456789ABCDEF";
   let color = "#";
-
   for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
@@ -58,15 +54,18 @@ function generateRandomColor() {
 
 function updatePaletteDisplay(colors) {
   const colorBoxes = document.querySelectorAll(".color-box");
-
   colorBoxes.forEach((box, index) => {
     const color = colors[index];
-    const colorDiv = box.querySelector(".color");
-    const hexValue = box.querySelector(".hex-value");
-
+    const colorDiv = box.querySelector(".color-box__color");
+    const hexValue = box.querySelector(".color-box__hex");
     colorDiv.style.backgroundColor = color;
     hexValue.textContent = color;
   });
 }
 
-// generatePalette();
+const navToggle = document.querySelector(".nav-toggle");
+const nav = document.querySelector(".site-header__nav");
+
+navToggle.addEventListener("click", () => {
+  nav.classList.toggle("show");
+});

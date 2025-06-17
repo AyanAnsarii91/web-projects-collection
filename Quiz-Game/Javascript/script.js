@@ -13,7 +13,31 @@ const maxScoreSpan = document.getElementById("max-score");
 const resultMessage = document.getElementById("result-message");
 const restartButton = document.getElementById("restart-btn");
 const progressBar = document.getElementById("progress");
+// Locate toggle button and nav list
+const menuToggle = document.getElementById("menu-toggle");
+const navList = document.getElementById("primary-nav");
 
+if (menuToggle && navList) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = navList.classList.toggle("open");
+
+    // Update ARIA attribute
+    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  // Optional: Close menu when clicking a link (improve UX)
+  navList.querySelectorAll("a.nav__link").forEach((link) => {
+    link.addEventListener("click", () => {
+      // On mobile, after clicking a link, collapse menu
+      if (navList.classList.contains("open")) {
+        navList.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+}
+
+// Quiz Questions
 const quizQuestions = [
   {
     question: "What is the capital of France?",
@@ -62,69 +86,72 @@ const quizQuestions = [
   },
 ];
 
-// QUIZ STATE VARS
+// Quiz State Variables
 let currentQuestionIndex = 0;
 let score = 0;
 let answersDisabled = false;
 
+// Initialize quiz info
 totalQuestionsSpan.textContent = quizQuestions.length;
 maxScoreSpan.textContent = quizQuestions.length;
 
-// event listeners
+// Event Listeners
 startButton.addEventListener("click", startQuiz);
 restartButton.addEventListener("click", restartQuiz);
 
+// Quiz Functions
 function startQuiz() {
-  // reset vars
+  // Reset quiz state
   currentQuestionIndex = 0;
   score = 0;
   scoreSpan.textContent = 0;
 
-  startScreen.classList.remove("active");
-  quizScreen.classList.add("active");
+  // Hide start screen, show quiz screen immediately
+  startScreen.classList.remove("screen--active");
+  startScreen.classList.add("screen--hidden");
+  quizScreen.classList.remove("screen--hidden");
+  quizScreen.classList.add("screen--active");
 
+  // Directly show first question
   showQuestion();
 }
 
 function showQuestion() {
-  // reset state
+  // Reset answer state
   answersDisabled = false;
 
+  // Get current question
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
+  // Update UI immediately
   currentQuestionSpan.textContent = currentQuestionIndex + 1;
-
   const progressPercent = (currentQuestionIndex / quizQuestions.length) * 100;
-  progressBar.style.width = progressPercent + "%";
-
+  progressBar.style.width = `${progressPercent}%`;
   questionText.textContent = currentQuestion.question;
 
+  // Clear previous answers
   answersContainer.innerHTML = "";
 
+  // Create answer buttons
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.textContent = answer.text;
     button.classList.add("answer-btn");
-
-    // what is dataset? it's a property of the button element that allows you to store custom data
     button.dataset.correct = answer.correct;
-
     button.addEventListener("click", selectAnswer);
-
     answersContainer.appendChild(button);
   });
 }
 
 function selectAnswer(event) {
-  // optimization check
+  // Prevent multiple answers
   if (answersDisabled) return;
-
   answersDisabled = true;
 
   const selectedButton = event.target;
   const isCorrect = selectedButton.dataset.correct === "true";
 
-  // Here Array.from() is used to convert the NodeList returned by answersContainer.children into an array, this is because the NodeList is not an array and we need to use the forEach method
+  // Highlight correct/incorrect answers immediately
   Array.from(answersContainer.children).forEach((button) => {
     if (button.dataset.correct === "true") {
       button.classList.add("correct");
@@ -133,31 +160,33 @@ function selectAnswer(event) {
     }
   });
 
+  // Update score if correct
   if (isCorrect) {
     score++;
     scoreSpan.textContent = score;
   }
 
-  setTimeout(() => {
-    currentQuestionIndex++;
-
-    // check if there are more questions or if the quiz is over
-    if (currentQuestionIndex < quizQuestions.length) {
-      showQuestion();
-    } else {
-      showResults();
-    }
-  }, 1000);
+  // Immediately move to next question or results
+  currentQuestionIndex++;
+  if (currentQuestionIndex < quizQuestions.length) {
+    showQuestion();
+  } else {
+    showResults();
+  }
 }
 
 function showResults() {
-  quizScreen.classList.remove("active");
-  resultScreen.classList.add("active");
+  // Hide quiz screen and show results
+  quizScreen.classList.remove("screen--active");
+  quizScreen.classList.add("screen--hidden");
+  resultScreen.classList.remove("screen--hidden");
+  resultScreen.classList.add("screen--active");
 
+  // Update final score
   finalScoreSpan.textContent = score;
 
+  // Show appropriate message based on score
   const percentage = (score / quizQuestions.length) * 100;
-
   if (percentage === 100) {
     resultMessage.textContent = "Perfect! You're a genius!";
   } else if (percentage >= 80) {
@@ -172,7 +201,8 @@ function showResults() {
 }
 
 function restartQuiz() {
-  resultScreen.classList.remove("active");
-
+  // Hide results screen and restart quiz
+  resultScreen.classList.remove("screen--active");
+  resultScreen.classList.add("screen--hidden");
   startQuiz();
 }

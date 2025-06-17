@@ -1,7 +1,7 @@
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
 const todosList = document.getElementById("todos-list");
-const emptyState = document.querySelector(".empty-state");
+const emptyState = document.querySelector(".todo-app__empty-state");
 const itemsLeftSpan = document.getElementById("items-left");
 const clearCompletedBtn = document.getElementById("clear-completed");
 const filters = document.querySelectorAll(".filter");
@@ -33,36 +33,43 @@ const renderTodos = () => {
     if (filter === "completed") return todo.completed;
   });
 
-  if (filteredTodos.length === 0) {
+  if (filteredTodos.length === 0 && emptyState) {
     emptyState.classList.remove("hidden");
-  } else {
+  } else if (emptyState) {
     emptyState.classList.add("hidden");
-    filteredTodos.forEach((todo, index) => {
-      const listItem = document.createElement("li");
-      listItem.classList.add("todo-item");
-      if (todo.completed) {
-        listItem.classList.add("completed");
-      }
-      listItem.innerHTML = `
-        <label class="checkbox-container">
-          <input type="checkbox" class="todo-checkbox" ${
-            todo.completed ? "checked" : ""
-          } data-index="${index}" />
-          <span class="checkmark"></span>
-        </label>
-        <span class="todo-item-text">${todo.text}</span>
-        <button class="delete-btn" data-index="${index}"><i class="fas fa-times"></i></button>
-      `;
-      todosList.appendChild(listItem);
-    });
   }
+
+  filteredTodos.forEach((todo, index) => {
+    const listItem = document.createElement("li");
+    listItem.classList.add("todo-item");
+    if (todo.completed) {
+      listItem.classList.add("completed");
+    }
+    listItem.innerHTML = `
+      <label class="checkbox-container">
+        <input type="checkbox" class="todo-checkbox" ${
+          todo.completed ? "checked" : ""
+        } data-index="${index}"/>
+        <span class="checkmark"></span>
+      </label>
+      <span class="todo-item-text">${todo.text}</span>
+      <button class="delete-btn" data-index="${index}">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    todosList.appendChild(listItem);
+  });
+
   updateItemsLeft();
 };
 
 const addTodo = () => {
   const taskText = taskInput.value.trim();
   if (taskText !== "") {
-    todos.push({ text: taskText, completed: false });
+    todos.push({
+      text: taskText,
+      completed: false,
+    });
     taskInput.value = "";
     saveTodos();
     renderTodos();
@@ -83,7 +90,9 @@ const deleteTodo = (index) => {
 
 const updateItemsLeft = () => {
   const activeTodos = todos.filter((todo) => !todo.completed).length;
-  itemsLeftSpan.textContent = `${activeTodos} items left`;
+  itemsLeftSpan.textContent = `${activeTodos} item${
+    activeTodos !== 1 ? "s" : ""
+  } left`;
 };
 
 const clearCompleted = () => {
@@ -94,14 +103,16 @@ const clearCompleted = () => {
 
 const setFilter = (newFilter) => {
   filter = newFilter;
-  filters.forEach((f) => f.classList.remove("active"));
+  filters.forEach((f) => f.classList.remove("filter--active"));
   document
     .querySelector(`.filter[data-filter="${filter}"]`)
-    .classList.add("active");
+    .classList.add("filter--active");
   renderTodos();
 };
 
+// Event Listeners
 addTaskBtn.addEventListener("click", addTodo);
+
 taskInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     addTodo();
@@ -124,11 +135,12 @@ todosList.addEventListener("click", (e) => {
 
 clearCompletedBtn.addEventListener("click", clearCompleted);
 
-filters.forEach((filterSpan) => {
-  filterSpan.addEventListener("click", () => {
-    setFilter(filterSpan.dataset.filter);
+filters.forEach((filterBtn) => {
+  filterBtn.addEventListener("click", () => {
+    setFilter(filterBtn.dataset.filter);
   });
 });
 
+// Initialize
 updateDate();
 renderTodos();

@@ -1,170 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team Members Showcase</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>Meet Our Team</h1>
-        <p>We're a passionate group of professionals dedicated to delivering exceptional results</p>
-      </header>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Meet our talented team of professionals driving innovation and success." />
+  <meta name="keywords" content="Team, Professionals, Company, Showcase, Projects, Talent" />
+  <meta name="author" content="Your Company Name" />
+
+  <title>Our Team | Company Name</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="navbar__logo">
+        <a href="#">CompanyName</a>
+      </div>
+      <ul class="navbar__menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-content">
+      <h1>Meet Our Team</h1>
+      <p>We are a passionate group of professionals dedicated to delivering exceptional results.</p>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <section class="team-section">
       <div class="team-grid">
-        <!-- TEAM MEMBER 1 -->
-        <div class="team-card">
-          <div class="card-top">
+
+        <article class="team-card">
+          <div class="team-card__top">
             <div class="profile-bg"></div>
-            <div class="profile-img">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" />
-            </div>
-            <h3>Alex Morgan</h3>
+            <figure class="profile-img">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex Morgan - Founder & CEO">
+            </figure>
+            <h2>Alex Morgan</h2>
             <p class="role">Founder & CEO</p>
           </div>
-          <div class="card-bottom">
-            <p class="bio">
-              Visionary leader with 15+ years of experience in tech innovation and business
-              strategy.
-            </p>
+          <div class="team-card__bottom">
+            <p class="bio">Visionary leader with 15+ years of experience in tech innovation and business strategy.</p>
             <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+              <a href="#" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="GitHub" class="social-icon"><i class="fab fa-github"></i></a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- TEAM MEMBER 2 -->
-        <div class="team-card">
-          <div class="card-top">
+        <article class="team-card">
+          <div class="team-card__top">
             <div class="profile-bg"></div>
-            <div class="profile-img">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member" />
-            </div>
-            <h3>Sarah Johnson</h3>
+            <figure class="profile-img">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson - Lead Designer">
+            </figure>
+            <h2>Sarah Johnson</h2>
             <p class="role">Lead Designer</p>
           </div>
-          <div class="card-bottom">
-            <p class="bio">
-              Award-winning designer specializing in UI/UX with a focus on creating intuitive user
-              experiences.
-            </p>
+          <div class="team-card__bottom">
+            <p class="bio">Award-winning designer specializing in UI/UX with a focus on intuitive user experiences.</p>
             <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="GitHub" class="social-icon"><i class="fab fa-github"></i></a>
+              <a href="#" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook"></i></a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- TEAM MEMBER 3 -->
-        <div class="team-card">
-          <div class="card-top">
+        <article class="team-card">
+          <div class="team-card__top">
             <div class="profile-bg"></div>
-            <div class="profile-img">
-              <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Team Member" />
-            </div>
-            <h3>David Chen</h3>
+            <figure class="profile-img">
+              <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="David Chen - Lead Developer">
+            </figure>
+            <h2>David Chen</h2>
             <p class="role">Lead Developer</p>
           </div>
-          <div class="card-bottom">
-            <p class="bio">
-              Full-stack developer with expertise in scalable architecture and emerging
-              technologies.
-            </p>
+          <div class="team-card__bottom">
+            <p class="bio">Full-stack developer with expertise in scalable architecture and emerging technologies.</p>
             <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-stack-overflow"></i></a>
+              <a href="#" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="GitHub" class="social-icon"><i class="fab fa-github"></i></a>
+              <a href="#" aria-label="Stack Overflow" class="social-icon"><i class="fab fa-stack-overflow"></i></a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- TEAM MEMBER 4 -->
-        <div class="team-card">
-          <div class="card-top">
+        <article class="team-card">
+          <div class="team-card__top">
             <div class="profile-bg"></div>
-            <div class="profile-img">
-              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Team Member" />
-            </div>
-            <h3>Emily Wilson</h3>
+            <figure class="profile-img">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily Wilson - Marketing Specialist">
+            </figure>
+            <h2>Emily Wilson</h2>
             <p class="role">Marketing Specialist</p>
           </div>
-          <div class="card-bottom">
-            <p class="bio">
-              Digital marketing expert with a knack for creating compelling content and growth
-              strategies.
+          <div class="team-card__bottom">
+            <p class="bio">Digital marketing expert with a knack for creating compelling content and growth strategies.
             </p>
             <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- TEAM MEMBER 5 -->
-        <div class="team-card">
-          <div class="card-top">
+        <article class="team-card">
+          <div class="team-card__top">
             <div class="profile-bg"></div>
-            <div class="profile-img">
-              <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Team Member" />
-            </div>
-            <h3>Michael Torres</h3>
+            <figure class="profile-img">
+              <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael Torres - Product Manager">
+            </figure>
+            <h2>Michael Torres</h2>
             <p class="role">Product Manager</p>
           </div>
-          <div class="card-bottom">
-            <p class="bio">
-              Strategic thinker focused on bringing innovative products to market that solve real
-              problems.
+          <div class="team-card__bottom">
+            <p class="bio">Strategic thinker focused on bringing innovative products to market that solve real problems.
             </p>
             <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-medium"></i></a>
+              <a href="#" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Medium" class="social-icon"><i class="fab fa-medium"></i></a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- TEAM MEMBER 6 -->
-        <div class="team-card">
-          <div class="card-top">
+        <article class="team-card">
+          <div class="team-card__top">
             <div class="profile-bg"></div>
-            <div class="profile-img">
-              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Team Member" />
-            </div>
-            <h3>Jennifer Lee</h3>
+            <figure class="profile-img">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Jennifer Lee - Customer Success">
+            </figure>
+            <h2>Jennifer Lee</h2>
             <p class="role">Customer Success</p>
           </div>
-          <div class="card-bottom">
-            <p class="bio">
-              Dedicated to ensuring our clients achieve their goals through excellent support and
-              guidance.
+          <div class="team-card__bottom">
+            <p class="bio">Dedicated to ensuring our clients achieve their goals through excellent support and guidance.
             </p>
             <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+              <a href="#" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Email" class="social-icon"><i class="fas fa-envelope"></i></a>
             </div>
           </div>
-        </div>
+        </article>
+
       </div>
 
       <div class="team-cta">
         <h2>Want to join our team?</h2>
         <p>We're always looking for talented individuals to join our growing team.</p>
-        <a href="#" class="cta-button"> View Open Positions </a>
+        <a href="#" class="cta-button">View Open Positions</a>
       </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <section class="footer-about">
+        <h3>About Us</h3>
+        <p>CompanyName is dedicated to creating innovative solutions that drive progress and success.</p>
+      </section>
+
+      <section class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </section>
+
+      <section class="footer-contact">
+        <h3>Contact</h3>
+        <p>Email: info@companyname.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+      </section>
+
+      <section class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </section>
     </div>
-  </body>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 CompanyName. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+
 </html>

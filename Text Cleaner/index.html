@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Clean and optimize your text by removing extra spaces, tabs, and empty lines with TextCleaner. Simple and efficient text formatting tool." />
+  <meta name="keywords" content="Text Cleaner, Remove Spaces, Text Formatter, Text Optimizer, Productivity Tool" />
+  <meta name="author" content="Ayan Ansari" />
+  <title>TextCleaner | Remove Spaces & Lines</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <!-- Site Header with Navbar -->
+  <header class="site-header" role="banner">
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <div class="navbar__brand">
+        <a href="#">🧹 TextCleaner</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" role="main">
+    <section class="tool-section">
+      <header class="tool-section__header">
+        <h1>TextCleaner - Space & Line Remover</h1>
+      </header>
+
+      <section class="tool-section__input">
+        <label for="input" class="visually-hidden">Input Text Area</label>
+        <textarea id="input" class="tool-section__textarea" placeholder="Paste or type your text here..."
+          aria-label="Input text area"></textarea>
+      </section>
+
+      <section class="tool-section__actions">
+        <button onclick="removeSpaces()" class="btn btn--primary">Remove All Spaces & Lines</button>
+        <button onclick="copyOutput()" class="btn btn--secondary">Copy Text</button>
+      </section>
+
+      <section class="tool-section__stats">
+        <div class="stats" id="statsBefore"></div>
+      </section>
+
+      <section class="tool-section__output">
+        <label for="output" class="visually-hidden">Output Text</label>
+        <div id="output" class="output-box" aria-live="polite" aria-atomic="true"></div>
+      </section>
+
+      <section class="tool-section__stats">
+        <div class="stats" id="statsAfter"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__content">
+      <p>✨ Created by Ayan Ansari | Dewas, M.P. | 2025 ✨</p>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

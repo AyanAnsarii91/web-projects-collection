@@ -1,103 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Github User Finder</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1><i class="fab fa-github"></i> GitHub User Finder</h1>
-        <p>Search for any GitHub user to see their profile and repositories</p>
-      </header>
 
-      <div class="search-container">
-        <input
-          type="text"
-          id="search"
-          placeholder="Enter a GitHub username..."
-          autocomplete="off"
-        />
-        <button id="search-btn">Search</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub User Finder | Developer Tool</title>
+  <meta name="description"
+    content="Search for any GitHub user to view their profile and repositories. A lightweight, responsive tool for developers." />
+  <meta name="keywords" content="GitHub, User Finder, Developer Tool, Open Source, Portfolio, Projects" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <!-- Visually hidden class for accessibility -->
+  <style>
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+  </style>
+
+  <!-- Header + Navbar -->
+  <header class="user-finder__header">
+    <nav class="user-finder__nav container">
+      <a href="#" class="user-finder__logo" aria-label="GitHub User Finder">
+        <i class="fab fa-github" aria-hidden="true"></i>
+        <span class="user-finder__logo-text">GitHubUserFinder</span>
+      </a>
+      <button class="user-finder__toggle" aria-label="Toggle navigation" aria-expanded="false"
+        aria-controls="user-finder-menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="user-finder__menu" id="user-finder-menu">
+        <li class="user-finder__menu-item"><a href="#search-section">Search</a></li>
+        <li class="user-finder__menu-item"><a href="#about">About</a></li>
+        <li class="user-finder__menu-item"><a href="#projects">Projects</a></li>
+        <li class="user-finder__menu-item"><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="user-finder__main container">
+    <!-- Search Section -->
+    <section id="search-section" class="user-finder__search-section">
+      <h1 class="user-finder__title">Search GitHub Users</h1>
+      <form id="search-form" class="user-finder__form" role="search">
+        <label for="search-input" class="visually-hidden">GitHub Username</label>
+        <input type="text" id="search-input" class="user-finder__input" placeholder="Enter a GitHub username..."
+          autocomplete="off" required />
+        <button type="submit" id="search-btn" class="user-finder__button">
+          Search
+        </button>
+      </form>
+      <p id="error-message" class="user-finder__error" aria-live="polite"></p>
+    </section>
+
+    <!-- Profile Section (hidden by default) -->
+    <section id="profile-section" class="user-finder__profile-section hidden" aria-live="polite">
+      <article class="user-finder__profile-header">
+        <img src="" alt="User avatar" id="avatar" class="user-finder__avatar" />
+        <div class="user-finder__info">
+          <h2 id="name" class="user-finder__name"></h2>
+          <p id="username" class="user-finder__username"></p>
+          <p id="bio" class="user-finder__bio"></p>
+          <div class="user-finder__location-joined">
+            <p class="user-finder__location">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <span id="location">Not specified</span>
+            </p>
+            <p class="user-finder__joined">
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              Joined <span id="joined-date"></span>
+            </p>
+          </div>
+          <a id="profile-link" class="user-finder__btn" href="#" target="_blank" rel="noopener">
+            View Profile
+          </a>
+        </div>
+      </article>
+
+      <div class="user-finder__stats">
+        <div class="user-finder__stat">
+          <i class="fas fa-users" aria-hidden="true"></i>
+          <span id="followers">0</span> followers
+        </div>
+        <div class="user-finder__stat">
+          <i class="fas fa-user-friends" aria-hidden="true"></i>
+          <span id="following">0</span> following
+        </div>
+        <div class="user-finder__stat">
+          <i class="fas fa-code-branch" aria-hidden="true"></i>
+          <span id="repos">0</span> repositories
+        </div>
       </div>
 
-      <div id="profile-container" class="hidden">
-        <div class="profile-header">
-          <img src="" alt="Profile avatar" id="avatar" />
-          <div class="profile-info">
-            <h2 id="name"></h2>
-            <p id="username"></p>
-            <p id="bio"></p>
-            <div class="location-date">
-              <p>
-                <i class="fas fa-map-marker-alt"></i>
-                <span id="location">Not specified</span>
-              </p>
-              <p>
-                <i class="far fa-calendar-alt"></i>
-                Joined
-                <span id="joined-date"></span>
-              </p>
-            </div>
-            <a id="profile-link" target="_blank" class="btn"> View Profile </a>
-          </div>
+      <div class="user-finder__additional-info">
+        <div class="user-finder__info-item" id="company-container">
+          <i class="fas fa-building" aria-hidden="true"></i>
+          <span id="company">Not specified</span>
         </div>
-
-        <div class="stats">
-          <div class="stat">
-            <i class="fas fa-users"></i>
-            <span id="followers"></span> followers
-          </div>
-
-          <div class="stat">
-            <i class="fas fa-user-friends"></i>
-            <span id="following"></span> following
-          </div>
-          <div class="stat">
-            <i class="fas fa-code-branch"></i>
-            <span id="repos"></span> repositories
-          </div>
+        <div class="user-finder__info-item" id="blog-container">
+          <i class="fas fa-link" aria-hidden="true"></i>
+          <a id="blog" href="#" target="_blank" rel="noopener">No website</a>
         </div>
-
-        <div class="additional-info">
-          <div class="info-item" id="company-container">
-            <i class="fas fa-building"></i>
-            <span id="company">Not specified</span>
-          </div>
-          <div class="info-item" id="blog-container">
-            <i class="fas fa-link"></i>
-            <a id="blog" target="_blank">No website</a>
-          </div>
-          <div class="info-item" id="twitter-container">
-            <i class="fab fa-twitter"></i>
-            <a id="twitter" target="_blank">No Twitter</a>
-          </div>
-        </div>
-
-        <div class="repos-section">
-          <h3>Latest Repositories</h3>
-          <div id="repos-container" class="repos-container">
-            <!-- Repositories will be inserted here dynamically -->
-
-            <div class="loading-repos">Loading repositories...</div>
-          </div>
+        <div class="user-finder__info-item" id="twitter-container">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <a id="twitter" href="#" target="_blank" rel="noopener">No Twitter</a>
         </div>
       </div>
 
-      <div id="error-container" class="hidden">
-        <p>No user found. Please try another username.</p>
+      <section class="user-finder__repos-section">
+        <h3 class="user-finder__repos-title">Latest Repositories</h3>
+        <div id="repos-container" class="user-finder__repos-container">
+          <p class="user-finder__loading">Loading repositories...</p>
+          <!-- Repo items will be inserted dynamically as <article> or <div> elements -->
+        </div>
+      </section>
+    </section>
+
+    <!-- Placeholder sections for nav links (About / Projects / Contact) -->
+    <section id="about" class="user-finder__about-section">
+      <h2>About This Tool</h2>
+      <p>
+        This GitHub User Finder helps developers quickly lookup user profiles and
+        repositories. It’s built with semantic HTML, vanilla CSS, and a lightweight
+        JS script. Perfect for showcasing in your portfolio.
+      </p>
+    </section>
+
+    <section id="projects" class="user-finder__projects-section">
+      <h2>Other Projects</h2>
+      <p>
+        Check out my other tools and showcases:
+      </p>
+      <ul class="user-finder__project-list">
+        <li><a href="#" target="_blank" rel="noopener">AI Question Paper Generator</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Notes & To-Do AI App</a></li>
+        <li><a href="#" target="_blank" rel="noopener">ChatWithMe Mobile App</a></li>
+        <!-- Add more project links here -->
+      </ul>
+    </section>
+
+    <section id="contact" class="user-finder__contact-section">
+      <h2>Contact</h2>
+      <p>Feel free to reach out:</p>
+      <ul class="user-finder__contact-list">
+        <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+        <li>GitHub: <a href="https://github.com/YourUsername" target="_blank" rel="noopener">YourUsername</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/YourProfile" target="_blank" rel="noopener">YourProfile</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="user-finder__footer">
+    <div class="user-finder__footer-container container">
+      <div class="footer__about">
+        <h3>About</h3>
+        <p>
+          GitHub User Finder is a lightweight tool to search GitHub profiles and repositories.
+          Built and maintained by Ayan Ansari.
+        </p>
+      </div>
+      <div class="footer__links">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="#search-section">Search Tool</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__social">
+        <h3>Follow Me</h3>
+        <ul class="footer__social-list">
+          <li><a href="#" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+          <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+          <!-- Add more social icons as needed -->
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
       </div>
     </div>
+    <div class="user-finder__footer-bottom">
+      <p>&copy; 2025 Ayan Ansari. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <script src="Javascript/Index.js"></script>
-  </body>
+  <!-- Link your JS (ensure this file handles search logic, toggling menu, etc.) -->
+  <script src="Javascript/Index.js"></script>
+  <script>
+    // Mobile nav toggle logic
+    (function () {
+      const toggleBtn = document.querySelector('.user-finder__toggle');
+      const menu = document.getElementById('user-finder-menu');
+      toggleBtn.addEventListener('click', () => {
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true' || false;
+        toggleBtn.setAttribute('aria-expanded', !expanded);
+        menu.classList.toggle('user-finder__menu--open');
+      });
+    })();
+  </script>
+</body>
+
 </html>

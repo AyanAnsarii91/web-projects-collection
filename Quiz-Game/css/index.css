@@ -1,40 +1,63 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap');
+/*
+  Enhanced QuizTime CSS - Modern, Responsive, Professional
+  Maintains small-device responsiveness; adds animations, hover effects, refined typography
+  Uses CSS variables for easy theming
+*/
 
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* CSS Variables - Theme & Spacing & Transitions */
 :root {
   /* Color Palette */
-  --color-primary: #e86a33;
-  --color-secondary: #333333;
-  --color-accent: #a3f0c4;
-  --color-background: #f5efe6;
+  --color-primary: #ff6b35;
+  --color-primary-hover: #e95a2c;
+  --color-secondary: #252525;
+  --color-accent: #20c997;
+  --color-background: #f4f7fa;
   --color-surface: #ffffff;
   --color-success: #28a745;
   --color-danger: #dc3545;
-  --color-muted: #666666;
+  --color-muted: #6c757d;
+  --color-border: #e0e0e0;
+  --color-shadow: rgba(0, 0, 0, 0.08);
 
   /* Typography */
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+  --base-font-size: 16px;
+  --line-height: 1.6;
 
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
+  /* Spacing Scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
 
   /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
 
   /* Transitions */
   --transition-fast: 0.2s ease-in-out;
   --transition-medium: 0.4s ease;
   --transition-slow: 0.6s ease;
+
+  /* Elevation */
+  --shadow-sm: 0 2px 4px var(--color-shadow);
+  --shadow-md: 0 4px 8px var(--color-shadow);
+  --shadow-lg: 0 8px 16px var(--color-shadow);
+
+  /* Z-Indices */
+  --z-navbar: 1000;
+  --z-modal: 2000;
 }
 
-/* RESET */
+/* Global Reset & Base Styles */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -42,137 +65,436 @@
 }
 
 html {
+  font-size: var(--base-font-size);
   scroll-behavior: smooth;
-  font-size: 16px;
 }
 
 body {
   background: var(--color-background);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: var(--spacing-lg);
   font-family: var(--font-body);
   color: var(--color-secondary);
+  line-height: var(--line-height);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+img, video, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: var(--font-heading);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+  background: var(--color-primary);
+  color: #fff;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+button:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.4);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Container Utility */
 .container {
   background: var(--color-surface);
   border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 600px;
+  box-shadow: var(--shadow-md);
+  max-width: 960px;
+  width: 95%;
+  margin: var(--spacing-xl) auto;
   overflow: hidden;
-  position: relative;
   animation: fadeIn var(--transition-medium) forwards;
 }
 
-/* SCREEN UTILS */
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scrollbar Styling for WebKit */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Header / Navbar */
+.header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  /* Fixed at top */
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  z-index: var(--z-navbar);
+}
+
+.header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  /* You can even remove this line, it's not needed */
+  /* top: -15px;  REMOVE this */
+}
+
+/* 1) Base: hide hamburger by default */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  /* adjust size as needed */
+  cursor: pointer;
+  color: var(--color-secondary);
+}
+
+/* Optional: hover style for toggle */
+.menu-toggle:hover {
+  color: var(--color-primary);
+}
+
+/* 2) Ensure nav__list is horizontal on desktop (you likely already have this) */
+.nav__list {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+/* 3) Responsive: on small screens, hide the nav by default and show toggle */
+@media (max-width: 768px) {
+
+  /* Show hamburger */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide nav links initially */
+  .nav__list {
+    display: none;
+    flex-direction: column;
+    background: var(--color-surface);
+    position: absolute;
+    top: 100%;
+    /* just below the header */
+    right: 0;
+    width: 200px;
+    /* or 100% if you want full-width menu */
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-sm) 0;
+    z-index: var(--z-navbar);
+  }
+
+  /* When open, show the menu */
+  .nav__list.open {
+    display: flex;
+  }
+
+  /* Style for nav items inside the dropdown */
+  .nav__item {
+    width: 100%;
+  }
+
+  .nav__link {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    /* optionally center text */
+    /* text-align: center; */
+  }
+
+  .nav__link:hover {
+    background: var(--color-background);
+  }
+
+  /* If you want the .header__inner to have position: relative so the absolute nav sits correctly */
+  .header__inner {
+    position: relative;
+  }
+}
+
+
+
+.header__logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.header__logo:hover {
+  transform: scale(1.05);
+}
+
+.nav__list {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.nav__link {
+  position: relative;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color var(--transition-fast);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-fast);
+}
+
+.nav__link:hover {
+  color: var(--color-primary);
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+/* Main Screens Utility */
 .screen {
   display: none;
   padding: var(--spacing-xl);
   text-align: center;
+  opacity: 0;
+  transition: opacity var(--transition-medium);
 }
-.screen.active {
+
+.screen--active {
   display: block;
+  opacity: 1;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+.screen--hidden {
+  display: none;
+  opacity: 0;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+/* Loading Spinner */
+.loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-modal);
 }
 
-/* START SCREEN */
-#start-screen h1 {
+.loading-spinner.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--color-primary);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+/* Start Screen */
+#start-screen {
+  /* additional padding for larger screens */
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.start-screen__title {
   font-family: var(--font-heading);
   color: var(--color-primary);
-  margin-bottom: var(--spacing-lg);
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin-bottom: var(--spacing-md);
   animation: pulse 3s infinite;
 }
 
-#start-screen p {
+.start-screen__subtitle {
   color: var(--color-muted);
-  margin-bottom: var(--spacing-xl);
-  font-size: clamp(1rem, 3vw, 1.1rem);
+  margin-bottom: var(--spacing-lg);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
-/* QUIZ HEADER */
+/* Quiz Header & Info */
 .quiz-header {
   margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
-#question-text {
+.quiz-header__title {
+  font-family: var(--font-heading);
   color: var(--color-secondary);
-  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-size: clamp(1.4rem, 4vw, 2rem);
   margin-bottom: var(--spacing-md);
-  line-height: 1.5;
+  text-transform: uppercase;
 }
 
 .quiz-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: var(--spacing-lg);
   color: var(--color-muted);
-  margin-bottom: var(--spacing-sm);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
+.quiz-info__text span {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Question Text */
+.quiz-question__text {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.4;
+  padding: 0 var(--spacing-sm);
+}
+
+/* Answers Container & Buttons */
 .answers-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-sm);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
 }
 
 .answer-btn {
-  background-color: var(--color-background);
-  color: var(--color-secondary);
-  border: 2px solid var(--color-background);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--spacing-md);
+  color: var(--color-secondary);
   cursor: pointer;
-  text-align: left;
-  transition: border var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
   font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
 }
+
+.answer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 107, 53, 0.1);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.answer-btn:hover::after {
+  opacity: 1;
+}
+
 .answer-btn:hover {
-  background-color: var(--color-surface);
   border-color: var(--color-primary);
+  background-color: var(--color-background);
   transform: translateY(-2px);
-}
-.answer-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px var(--color-accent);
 }
 
 .answer-btn.correct {
-  background-color: var(--color-success);
-  border-color: var(--color-success);
-  color: #fff;
-  animation: fadeIn var(--transition-medium);
-}
-.answer-btn.incorrect {
-  background-color: var(--color-danger);
-  border-color: var(--color-danger);
-  color: #fff;
-  animation: fadeIn var(--transition-medium);
+  background: var(--color-success) !important;
+  border-color: var(--color-success) !important;
+  color: #fff !important;
 }
 
-/* PROGRESS BAR */
-.progress-bar {
-  height: 0.5rem;
-  background-color: var(--color-background);
+.answer-btn.incorrect {
+  background: var(--color-danger) !important;
+  border-color: var(--color-danger) !important;
+  color: #fff !important;
+}
+
+/* Progress Bar */
+.quiz-progress-bar, .progress-bar {
+  height: 10px;
+  background-color: var(--color-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  margin-top: var(--spacing-md);
 }
+
 .progress {
   height: 100%;
   background-color: var(--color-primary);
@@ -180,57 +502,224 @@ body {
   transition: width var(--transition-fast);
 }
 
-/* RESULT SCREEN */
-#result-screen h1 {
+/* Result Screen */
+#result-screen {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.result-screen__title {
   font-family: var(--font-heading);
   color: var(--color-primary);
-  margin-bottom: var(--spacing-xl);
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: var(--spacing-lg);
 }
 
 .result-info {
-  background-color: var(--color-background);
+  background: var(--color-surface);
   border-radius: var(--radius-md);
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-xl);
-  text-align: left;
+  box-shadow: var(--shadow-sm);
 }
-.result-info p {
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  color: var(--color-secondary);
+
+.result-info__score {
+  font-size: 1.4rem;
   margin-bottom: var(--spacing-sm);
 }
 
-#result-message {
-  font-size: clamp(1.3rem, 4vw, 1.5rem);
+.result-info__message {
+  font-size: 1.6rem;
   font-weight: 600;
   color: var(--color-primary);
+  margin-top: var(--spacing-sm);
 }
 
-button {
-  background-color: var(--color-primary);
-  color: var(--color-surface);
-  border: none;
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background var(--transition-fast), transform var(--transition-fast);
+/* Sections: About & Contact */
+.sectionabout, .sectioncontact, .section {
+  padding: var(--spacing-xl) var(--spacing-sm);
+  text-align: center;
+}
+
+.about__title, .contact__title, .section h2 {
   font-family: var(--font-heading);
-}
-button:hover {
-  background-color: darken(var(--color-primary), 10%);
-  transform: translateY(-2px);
-}
-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px var(--color-accent);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
 }
 
-/* RESPONSIVE */
+.about__text, .contact__text, .section p, .section li {
+  color: var(--color-muted);
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height);
+}
+
+.contact__list {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.contact__link {
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+.contact__link:hover {
+  color: var(--color-accent);
+}
+
+/* Footer */
+.footer {
+  background: var(--color-surface);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+  margin-top: auto;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__title {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer__text {
+  color: var(--color-muted);
+  line-height: var(--line-height);
+}
+
+.footer__links-list, .footer__social-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer__link, .footer__social-link {
+  color: var(--color-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer__link:hover, .footer__social-link:hover {
+  color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+.footer__bottom {
+  text-align: center;
+  color: var(--color-muted);
+  margin-top: var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+/* Accessibility: Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: #fff;
+  padding: var(--spacing-sm) var(--spacing-md);
+  z-index: var(--z-navbar);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/*==========================================================================
+  Beautiful Custom Scrollbar (WebKit only)
+==========================================================================*/
+/* Entire scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-left: 1px solid var(--color-border);
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-pill);
+  border: 3px solid var(--color-bg);
+  background-clip: padding-box;
+  transition: background-color var(--transition-medium);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Corner between vertical and horizontal scrollbars */
+::-webkit-scrollbar-corner {
+  background: var(--color-bg);
+}
+
+/* For horizontal scrollbars (if needed) */
+::-webkit-scrollbar-thumb:horizontal {
+  min-width: 40px;
+}
+
+/* Optional: Style for when content is being scrolled */
+.scrolling ::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+}
+
+/* Optional: Add animation to scrollbar handle */
+@keyframes scrollbar-pulse {
+  0% {
+    background-color: var(--color-primary);
+  }
+
+  50% {
+    background-color: var(--color-accent);
+  }
+
+  100% {
+    background-color: var(--color-primary);
+  }
+}
+
+/* Apply animation on active scroll */
+::-webkit-scrollbar-thumb:active {
+  animation: scrollbar-pulse 2s infinite;
+}
+
+
+/* Responsive Enhancements */
 @media (max-width: 768px) {
-  .answers-container {
-    grid-template-columns: 1fr;
+  .header__inner {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .quiz-info {
+    flex-direction: column;
+    gap: var(--spacing-xs);
   }
 }
 
@@ -238,17 +727,37 @@ button:focus {
   .container {
     padding: var(--spacing-md);
   }
-  #start-screen h1, #result-screen h1 {
+
+  .start-screen__title, .result-screen__title {
     font-size: 2rem;
   }
-  #question-text {
-    font-size: 1.3rem;
+
+  .quiz-question__text {
+    font-size: 1.4rem;
   }
+
   .answer-btn {
     padding: var(--spacing-sm);
+    font-size: 0.95rem;
   }
+
   button {
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: 1rem;
   }
 }
+
+/* Utility Classes for Animations & Shadows */
+.fade-in {
+  animation: fadeIn var(--transition-medium) forwards;
+}
+
+.scale-up:hover {
+  transform: scale(1.05);
+}
+
+.shadow-hover:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* End of Enhanced CSS */

@@ -1,70 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Color Palette Generator</title>
+    <meta name="description"
+        content="ColorPaletteGenerator - Instantly create beautiful color palettes for your projects." />
+    <meta name="keywords" content="Color Palette Generator, Color Picker, Web Design Tools, UI Colors" />
+    <meta name="author" content="Ayan Ansari" />
+    <meta name="theme-color" content="#4a6fa5" />
+
+    <!-- OpenGraph / Social Meta Tags -->
+    <meta property="og:title" content="ColorPaletteGenerator - Beautiful Color Palettes" />
+    <meta property="og:description"
+        content="Instantly generate beautiful color palettes for your web and design projects." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourwebsite.com/color-palette-generator" />
+    <meta property="og:image" content="https://yourwebsite.com/images/color-palette-preview.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" media="all" /> -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>ColorPaletteGenerator | Generate Beautiful Color Palettes</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Color Palette Generator</h1>
+    <!-- Skip Link for Accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-        <button id="generate-btn">
-            <i class="fas fa-sync-alt"></i>
-            Generate Palette
-        </button>
+    <!-- Header with Navigation -->
+    <!-- Header with Beautiful Responsive Navbar -->
+    <header class="site-header">
+        <div class="container site-header__container flex-center space-between">
+            <a href="/" class="site-header__logo">🎨 ColorPaletteGenerator</a>
 
-        <div class="palette-container">
-            <!-- COLOR BOX 1 -->
-            <div class="color-box">
-                <div class="color" style="background-color: #e1f5fe"></div>
-                <div class="color-info">
-                    <span class="hex-value">#E1F5FE</span>
-                    <i class="far fa-copy copy-btn" title="Copy to clipboard"></i>
-                </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="site-header__nav" aria-label="Main navigation">
+                <ul class="site-header__nav-list">
+                    <li class="site-header__nav-item">
+                        <a href="/" class="site-header__nav-link">Home</a>
+                    </li>
+                    <li class="site-header__nav-item">
+                        <a href="#features" class="site-header__nav-link">Features</a>
+                    </li>
+                    <li class="site-header__nav-item">
+                        <a href="#about" class="site-header__nav-link">About</a>
+                    </li>
+                    <li class="site-header__nav-item">
+                        <a href="#contact" class="site-header__nav-link">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main id="main-content" class="main">
+        <section class="hero-section container">
+            <h1 class="hero-section__title">ColorPaletteGenerator</h1>
+            <p class="hero-section__subtitle">Instantly create beautiful color palettes for your projects</p>
+            <button id="generate-btn" class="button button--primary">
+                <i class="fas fa-sync-alt" aria-hidden="true"></i> Generate Palette
+            </button>
+        </section>
+
+        <section class="palette-section container">
+            <div class="palette-section__grid">
+                <!-- COLOR BOX 1 -->
+                <article class="color-box">
+                    <div class="color-box__color" style="background-color: #e1f5fe;" role="img"
+                        aria-label="Color #E1F5FE"></div>
+                    <div class="color-box__info">
+                        <span class="color-box__hex">#E1F5FE</span>
+                        <i class="far fa-copy color-box__copy-btn" title="Copy to clipboard" role="button" tabindex="0"
+                            aria-label="Copy color #E1F5FE"></i>
+                    </div>
+                </article>
+
+                <!-- COLOR BOX 2 -->
+                <article class="color-box">
+                    <div class="color-box__color" style="background-color: #b3e5fc;" role="img"
+                        aria-label="Color #B3E5FC"></div>
+                    <div class="color-box__info">
+                        <span class="color-box__hex">#B3E5FC</span>
+                        <i class="far fa-copy color-box__copy-btn" title="Copy to clipboard" role="button" tabindex="0"
+                            aria-label="Copy color #B3E5FC"></i>
+                    </div>
+                </article>
+
+                <!-- COLOR BOX 3 -->
+                <article class="color-box">
+                    <div class="color-box__color" style="background-color: #81d4fa;" role="img"
+                        aria-label="Color #81D4FA"></div>
+                    <div class="color-box__info">
+                        <span class="color-box__hex">#81D4FA</span>
+                        <i class="far fa-copy color-box__copy-btn" title="Copy to clipboard" role="button" tabindex="0"
+                            aria-label="Copy color #81D4FA"></i>
+                    </div>
+                </article>
+
+                <!-- COLOR BOX 4 -->
+                <article class="color-box">
+                    <div class="color-box__color" style="background-color: #4fc3f7;" role="img"
+                        aria-label="Color #4FC3F7"></div>
+                    <div class="color-box__info">
+                        <span class="color-box__hex">#4FC3F7</span>
+                        <i class="far fa-copy color-box__copy-btn" title="Copy to clipboard" role="button" tabindex="0"
+                            aria-label="Copy color #4FC3F7"></i>
+                    </div>
+                </article>
+
+                <!-- COLOR BOX 5 -->
+                <article class="color-box">
+                    <div class="color-box__color" style="background-color: #29b6f6;" role="img"
+                        aria-label="Color #29B6F6"></div>
+                    <div class="color-box__info">
+                        <span class="color-box__hex">#29B6F6</span>
+                        <i class="far fa-copy color-box__copy-btn" title="Copy to clipboard" role="button" tabindex="0"
+                            aria-label="Copy color #29B6F6"></i>
+                    </div>
+                </article>
             </div>
-            <!-- COLOR BOX 2 -->
-            <div class="color-box">
-                <div class="color" style="background-color: #b3e5fc"></div>
-                <div class="color-info">
-                    <span class="hex-value">#B3E5FC</span>
-                    <i class="far fa-copy copy-btn" title="Copy to clipboard"></i>
-                </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section container">
+            <h2 class="features-section__title">Features</h2>
+            <ul class="features-section__list">
+                <li>Generate beautiful color palettes</li>
+                <li>Copy colors with one click</li>
+                <li>Responsive & mobile friendly</li>
+                <li>Pure Vanilla HTML, CSS, and JS</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container site-footer__container">
+            <div class="site-footer__section">
+                <h3 id="about" class="site-footer__title">About</h3>
+                <p>ColorPaletteGenerator is a free, lightweight tool to help designers and developers generate and use
+                    color palettes for their creative work.</p>
             </div>
-            <!-- COLOR BOX 3 -->
-            <div class="color-box">
-                <div class="color" style="background-color: #81d4fa"></div>
-                <div class="color-info">
-                    <span class="hex-value">#81D4FA</span>
-                    <i class="far fa-copy copy-btn" title="Copy to clipboard"></i>
-                </div>
+            <div class="site-footer__section">
+                <h3 id="contact" class="site-footer__title">Contact</h3>
+                <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+                <p>Twitter: <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer">@example</a>
+                </p>
             </div>
-            <!-- COLOR BOX 4 -->
-            <div class="color-box">
-                <div class="color" style="background-color: #4fc3f7"></div>
-                <div class="color-info">
-                    <span class="hex-value">#4FC3F7</span>
-                    <i class="far fa-copy copy-btn" title="Copy to clipboard"></i>
-                </div>
-            </div>
-            <!-- COLOR BOX 5 -->
-            <div class="color-box">
-                <div class="color" style="background-color: #29b6f6"></div>
-                <div class="color-info">
-                    <span class="hex-value">#29B6F6</span>
-                    <i class="far fa-copy copy-btn" title="Copy to clipboard"></i>
-                </div>
+            <div class="site-footer__section">
+                <h3 class="site-footer__title">Links</h3>
+                <ul class="site-footer__links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
-    </div>
+        <div class="site-footer__bottom">
+            <p>&copy; <span id="year"></span> ColorPaletteGenerator. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <script src="script.js"></script>
+    <!-- JS to Update Year -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Main Script -->
+    <script src="script.js" defer></script>
+    <!-- <script src="script.js" defer></script> -->
+
 </body>
 
 </html>

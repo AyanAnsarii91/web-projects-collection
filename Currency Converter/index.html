@@ -2,46 +2,134 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Curreny Converter App</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
-        rel="stylesheet" />
+  <!-- SEO Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency Converter | Ayan Ansari Projects</title>
+  <meta name="description" content="Convert currency easily with this real-time Currency Converter tool. Built by Ayan Ansari." />
+  <meta name="keywords" content="currency converter, exchange rates, finance tool, Ayan Ansari, web app" />
+  <meta name="author" content="Ayan Ansari" />
+
+  <!-- Open Graph (for social sharing) -->
+  <meta property="og:title" content="Currency Converter | Ayan Ansari Projects" />
+  <meta property="og:description" content="Real-time currency converter. Convert any currency easily and quickly." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-website-url.com" />
+  <meta property="og:image" content="https://your-website-url.com/preview-image.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div class="container">
-        <h1>Currency Converter</h1>
+  <!-- Header / Navbar -->
+  <header class="navbar" role="banner">
+    <div class="navbar__container">
+      <a href="index.html" class="navbar__brand" aria-label="Ayan Ansari Projects">
+        <h1 class="navbar__logo">Ayan Ansari</h1>
+      </a>
 
-        <form id="converter-form">
-            <div class="form-group">
-                <label for="amount">Amount</label>
-                <input type="number" id="amount" placeholder="Enter amount" required />
-            </div>
+      <nav class="navbar__menu" role="navigation" aria-label="Main Navigation">
+        <ul class="navbar__list">
+          <li class="navbar__item"><a href="index.html" class="navbar__link">Home</a></li>
+          <li class="navbar__item"><a href="#tools" class="navbar__link">Tools</a></li>
+          <li class="navbar__item"><a href="#projects" class="navbar__link">Projects</a></li>
+          <li class="navbar__item"><a href="#contact" class="navbar__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-            <div class="form-group">
-                <label for="from-currency">From</label>
-                <select id="from-currency">
-                    <!-- Currency options will be inserted from our api -->
-                </select>
-            </div>
+  <!-- Main Content -->
+  <main role="main">
+    <section class="converter-section">
+      <div class="container">
+        <h1 class="converter-section__title">Currency Converter</h1>
+        <p class="converter-section__subtitle">Convert your currency in real-time with accurate exchange rates.</p>
 
-            <div class="form-group">
-                <label for="to-currency">To</label>
-                <select id="to-currency">
-                    <!-- Currency options will be inserted from our api -->
-                </select>
-            </div>
+        <form id="converter-form" class="converter-form" aria-label="Currency Converter Form">
+          <div class="converter-form__group">
+            <label for="amount" class="converter-form__label">Amount</label>
+            <input type="number" id="amount" name="amount" class="converter-form__input" placeholder="Enter amount" required aria-required="true" />
+          </div>
 
-            <button type="submit">Convert</button>
+          <div class="converter-form__group">
+            <label for="from-currency" class="converter-form__label">From Currency</label>
+            <select id="from-currency" name="from-currency" class="converter-form__select" required aria-required="true">
+              <!-- Currency options will be inserted from API -->
+            </select>
+          </div>
+
+          <div class="converter-form__group">
+            <label for="to-currency" class="converter-form__label">To Currency</label>
+            <select id="to-currency" name="to-currency" class="converter-form__select" required aria-required="true">
+              <!-- Currency options will be inserted from API -->
+            </select>
+          </div>
+
+          <button type="submit" class="converter-form__button">Convert</button>
         </form>
 
-        <div id="result"></div>
+        <div id="result" class="converter-result" role="region" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__container">
+      <!-- About Section -->
+      <section class="footer__section footer__about" aria-labelledby="footer-about-title">
+        <h2 id="footer-about-title" class="footer__title">About</h2>
+        <p class="footer__text">
+          Ayan Ansari is a passionate web developer creating useful tools and modern web apps with clean design and powerful functionality.
+        </p>
+      </section>
+
+      <!-- Links Section -->
+      <section class="footer__section footer__links" aria-labelledby="footer-links-title">
+        <h2 id="footer-links-title" class="footer__title">Links</h2>
+        <ul class="footer__list">
+          <li><a href="index.html" class="footer__link">Home</a></li>
+          <li><a href="#tools" class="footer__link">Tools</a></li>
+          <li><a href="#projects" class="footer__link">Projects</a></li>
+          <li><a href="#contact" class="footer__link">Contact</a></li>
+        </ul>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="footer__section footer__contact" aria-labelledby="footer-contact-title">
+        <h2 id="footer-contact-title" class="footer__title">Contact</h2>
+        <ul class="footer__list">
+          <li><a href="mailto:your.email@example.com" class="footer__link">your.email@example.com</a></li>
+          <li><a href="tel:+911234567890" class="footer__link">+91 123 456 7890</a></li>
+          <li><span class="footer__text">Dewas, Madhya Pradesh, India</span></li>
+        </ul>
+      </section>
+
+      <!-- Social Media -->
+      <section class="footer__section footer__social" aria-labelledby="footer-social-title">
+        <h2 id="footer-social-title" class="footer__title">Follow Me</h2>
+        <ul class="footer__social-list">
+          <li><a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="#" class="footer__social-link" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+          <li><a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+      </section>
     </div>
 
-    <script src="script.js"></script>
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        &copy; <time datetime="2025">2025</time> Ayan Ansari. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
 </body>
 
 </html>

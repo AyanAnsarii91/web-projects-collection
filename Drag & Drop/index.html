@@ -4,54 +4,129 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enhanced Kanban Board</title>
+    <meta name="description"
+        content="Enhanced Kanban Board - Manage your tasks visually with a modern Kanban board interface." />
+    <meta name="keywords" content="Kanban, Task Manager, Productivity Tool, Project Management" />
+    <meta name="author" content="Ayan Ansari" />
+    <title>Enhanced Kanban Board | Ayan Projects</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-
-    </style>
 </head>
 
 <body>
-    <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    <div class="container">
-        <h1>Enhanced Kanban Board</h1>
-        <div class="board">
-            <div class="list" id="list1">
-                <h2>To Do <span class="count"></span></h2>
-                <div class="card" draggable="true" id="card1">Wash Dishes<span class="delete-btn"
-                        onclick="removeCard(this)">✖</span></div>
-                <div class="card" draggable="true" id="card2">Buy Groceries<span class="delete-btn"
-                        onclick="removeCard(this)">✖</span></div>
-                <button class="add-btn" onclick="addCard('list1')">+ Add Card</button>
-                <button class="delete-all">Delete All</button>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="navbar__brand">
+                <a href="#">Ayan Projects</a>
             </div>
-            <div class="list" id="list2">
-                <h2>In Progress <span class="count"></span></h2>
-                <div class="card" draggable="true" id="card3">Learn to code<span class="delete-btn"
-                        onclick="removeCard(this)">✖</span></div>
-                <button class="add-btn" onclick="addCard('list2')">+ Add Card</button>
+            <ul class="navbar__links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <button class="navbar__toggle-dark" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
+        </nav>
+    </header>
+
+    <main class="main-content" role="main">
+        <section class="kanban-board">
+            <header class="kanban-board__header">
+                <h1>Enhanced Kanban Board</h1>
+            </header>
+
+            <div class="kanban-board__container">
+
+                <article class="kanban-list" id="list1">
+                    <h2 class="kanban-list__title">To Do <span class="kanban-list__count"></span></h2>
+
+                    <div class="kanban-card" draggable="true" id="card1">
+                        <p class="kanban-card__text">Wash Dishes</p>
+                        <button class="kanban-card__delete" aria-label="Delete card"
+                            onclick="removeCard(this)">✖</button>
+                    </div>
+
+                    <div class="kanban-card" draggable="true" id="card2">
+                        <p class="kanban-card__text">Buy Groceries</p>
+                        <button class="kanban-card__delete" aria-label="Delete card"
+                            onclick="removeCard(this)">✖</button>
+                    </div>
+
+                    <button class="kanban-list__add-card" onclick="addCard('list1')">+ Add Card</button>
+                    <button class="kanban-list__delete-all">Delete All</button>
+                </article>
+
+                <article class="kanban-list" id="list2">
+                    <h2 class="kanban-list__title">In Progress <span class="kanban-list__count"></span></h2>
+
+                    <div class="kanban-card" draggable="true" id="card3">
+                        <p class="kanban-card__text">Learn to code</p>
+                        <button class="kanban-card__delete" aria-label="Delete card"
+                            onclick="removeCard(this)">✖</button>
+                    </div>
+
+                    <button class="kanban-list__add-card" onclick="addCard('list2')">+ Add Card</button>
+                </article>
+
+                <article class="kanban-list" id="list3">
+                    <h2 class="kanban-list__title">Done <span class="kanban-list__count"></span></h2>
+
+                    <button class="kanban-list__add-card" onclick="addCard('list3')">+ Add Card</button>
+                </article>
 
             </div>
-            <div class="list" id="list3">
-                <h2>Done <span class="count"></span></h2>
-                <button class="add-btn" onclick="addCard('list3')">+ Add Card</button>
-            </div>
-        </div>
-        <!-- Custom Edit Modal -->
-        <div id="editModal" style="display:none;">
-            <div class="modal-content">
-                <textarea id="editTextarea" placeholder="Edit your task here..."></textarea>
-                <div class="buttons">
-                    <button id="cancelEditBtn" class="cancel-btn">Cancel</button>
-                    <button id="saveEditBtn" class="save-btn">Save</button>
+        </section>
+
+        <section id="editModal" class="modal" style="display:none;" role="dialog" aria-labelledby="editModalLabel">
+            <div class="modal__content">
+                <h3 id="editModalLabel" class="modal__title">Edit Task</h3>
+                <textarea id="editTextarea" class="modal__textarea" placeholder="Edit your task here..."></textarea>
+                <div class="modal__buttons">
+                    <button id="cancelEditBtn" class="modal__button modal__button--cancel">Cancel</button>
+                    <button id="saveEditBtn" class="modal__button modal__button--save">Save</button>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer__content">
+            <section class="footer__section">
+                <h3>About</h3>
+                <p>This is an enhanced Kanban board project built by Ayan Ansari.</p>
+            </section>
+
+            <section class="footer__section">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </section>
+
+            <section class="footer__section">
+                <h3>Contact</h3>
+                <p>Email: <a href="mailto:ayan@example.com">ayan@example.com</a></p>
+            </section>
+
+            <section class="footer__section">
+                <h3>Follow Me</h3>
+                <ul class="footer__social">
+                    <li><a href="#" aria-label="Twitter">Twitter</a></li>
+                    <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+                    <li><a href="#" aria-label="GitHub">GitHub</a></li>
+                </ul>
+            </section>
         </div>
 
-    </div>
+        <div class="footer__bottom">
+            <p>&copy; 2025 Ayan Ansari. All rights reserved.</p>
+        </div>
+    </footer>
 
+    <script src="script.js"></script>
 
 </body>
-<script src="script.js"></script>
 
 </html>

@@ -1,6 +1,5 @@
-const { useContext } = require("react");
-
-const passwordEl = document.getElementById("password");
+// Select DOM elements
+const passwordEl = document.getElementById("password-output");
 const lengthEl = document.getElementById("length");
 const lengthValueEl = document.getElementById("length-value");
 const uppercaseEl = document.getElementById("uppercase");
@@ -10,42 +9,35 @@ const symbolsEl = document.getElementById("symbols");
 const generateBtn = document.getElementById("generate-btn");
 const copyBtn = document.getElementById("copy-btn");
 const strengthLabelEl = document.getElementById("strength-label");
-const strengthBarEl = document.querySelector(".strength-bar");
+const strengthBarEl = document.querySelector(".pg-generator__strength-bar");
 
+// Character sets
 const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
 const numberChars = "0123456789";
-const symbolChars = "!@#$%^&*()_+[]{}|;:,.<>?";
+const symbolChars = "!@#$%^&*()_+[]{}|;:,.<>?/";
 
-// Update length value display
+// Update length display when slider moves
 lengthEl.addEventListener("input", () => {
   lengthValueEl.innerText = lengthEl.value;
 });
 
-// Generate password
+// Generate password when button clicked
 generateBtn.addEventListener("click", generatePassword);
 
 function generatePassword() {
-  const length = lengthEl.value;
+  const length = parseInt(lengthEl.value);
   let characters = "";
   let password = "";
 
-  if (uppercaseEl.checked) {
-    characters += uppercaseChars;
-  }
-  if (lowercaseEl.checked) {
-    characters += lowercaseChars;
-  }
-  if (numbersEl.checked) {
-    characters += numberChars;
-  }
-  if (symbolsEl.checked) {
-    characters += symbolChars;
-  }
+  if (uppercaseEl.checked) characters += uppercaseChars;
+  if (lowercaseEl.checked) characters += lowercaseChars;
+  if (numbersEl.checked) characters += numberChars;
+  if (symbolsEl.checked) characters += symbolChars;
 
   if (characters === "") {
     passwordEl.value = "Select at least one option";
-    updateStrength(0);
+    updateStrength("");
     return;
   }
 
@@ -60,9 +52,16 @@ function generatePassword() {
 
 // Copy password to clipboard
 copyBtn.addEventListener("click", () => {
-  passwordEl.select();
-  document.execCommand("copy");
-  alert("Password copied to clipboard!");
+  if (passwordEl.value && passwordEl.value !== "Select at least one option") {
+    navigator.clipboard
+      .writeText(passwordEl.value)
+      .then(() => {
+        alert("Password copied to clipboard!");
+      })
+      .catch(() => {
+        alert("Failed to copy password.");
+      });
+  }
 });
 
 // Update password strength indicator
@@ -72,7 +71,7 @@ function updateStrength(password) {
   const hasUppercase = /[A-Z]/.test(password);
   const hasLowercase = /[a-z]/.test(password);
   const hasNumbers = /[0-9]/.test(password);
-  const hasSymbols = /[!@#$%^&*()_+\[\]{}|;:,.<>?]/.test(password);
+  const hasSymbols = /[!@#$%^&*()_+\[\]{}|;:,.<>?/]/.test(password);
 
   if (length >= 8) strength++;
   if (hasUppercase) strength++;
@@ -82,7 +81,6 @@ function updateStrength(password) {
 
   let strengthText = "Weak";
   let strengthColor = "red";
-
   if (strength >= 3) {
     strengthText = "Medium";
     strengthColor = "orange";
@@ -97,8 +95,15 @@ function updateStrength(password) {
   strengthBarEl.style.backgroundColor = strengthColor;
 }
 
-// Initial password generation
-generatePassword();
-
-
-       
+// Add scroll class for animation (optional)
+document.addEventListener(
+  "scroll",
+  function () {
+    document.documentElement.classList.add("scrolling");
+    clearTimeout(window.scrollEndTimer);
+    window.scrollEndTimer = setTimeout(function () {
+      document.documentElement.classList.remove("scrolling");
+    }, 500);
+  },
+  { passive: true }
+);

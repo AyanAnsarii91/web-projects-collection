@@ -3,71 +3,240 @@
 
 <head>
     <meta charset="UTF-8" />
+    <!-- Ensure proper mobile scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- SEO essentials -->
+    <title>Password Generator | Developer Tool</title>
+    <meta name="description"
+        content="Generate strong, customizable passwords instantly. Password Generator tool with options for length, uppercase, lowercase, numbers, and symbols." />
+    <meta name="keywords" content="Password Generator, Security Tool, Strong Password, Developer Tool" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Preconnect and Google Fonts (customize as desired) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet" />
+
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Link to your stylesheet -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div class="container">
-        <h1>Password Generator</h1>
+    <!-- Skip-link for accessibility -->
+    <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
 
-        <!-- password container -->
-        <div class="password-container">
-            <input type="text" readonly id="password" />
-            <i class="far fa-copy" id="copy-btn" title="Copy to clipboard"></i>
+    <!-- ===== Header & Navigation ===== -->
+    <header class="pg-header">
+        <div class="container pg-header__inner">
+            <a href="#" class="pg-header__logo" aria-label="Password Generator Home">
+                <i class="fas fa-key pg-header__logo-icon" aria-hidden="true"></i>
+                <span class="pg-header__logo-text">PasswordGenerator</span>
+            </a>
+            <button class="pg-header__toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+                aria-controls="pg-nav-menu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <nav class="pg-header__nav" id="pg-nav-menu" role="navigation">
+                <ul class="pg-header__nav-list">
+                    <li class="pg-header__nav-item"><a href="#generator-section">Generate</a></li>
+                    <li class="pg-header__nav-item"><a href="#about-section">About</a></li>
+                    <li class="pg-header__nav-item"><a href="#projects-section">Projects</a></li>
+                    <li class="pg-header__nav-item"><a href="#contact-section">Contact</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <!-- options -->
-        <div class="options">
-            <!-- password length -->
-            <div class="option">
-                <label for="length">Password Length</label>
-                <div class="range-container">
-                    <input type="range" id="length" min="6" max="24" value="12" />
-                    <span id="length-value">12</span>
+    <!-- ===== Main Content ===== -->
+    <main id="main-content" class="pg-main">
+        <div class="container pg-main__inner">
+            <!-- Generator Section -->
+            <section id="generator-section" class="pg-generator" aria-labelledby="generator-heading">
+                <h1 id="generator-heading" class="pg-generator__title">Password Generator</h1>
+
+                <!-- Password display & copy -->
+                <div class="pg-generator__output">
+                    <label for="password-output" class="visually-hidden">Generated Password</label>
+                    <input type="text" id="password-output" class="pg-generator__password-input" readonly
+                        aria-live="polite" placeholder="Your generated password will appear here" />
+                    <!-- Change this button type -->
+                    <button type="button" id="generate-btn" class="pg-generator__generate-btn">
+                        <i class="fas fa-key pg-generator__generate-icon" aria-hidden="true"></i> Generate Password
+                    </button>
+
                 </div>
+
+                <!-- Options Form -->
+                <form id="generator-form" class="pg-generator__form" novalidate>
+                    <!-- Password Length -->
+                    <fieldset class="pg-generator__fieldset">
+                        <legend class="pg-generator__legend">Password Length</legend>
+                        <div class="pg-generator__range-container">
+                            <label for="length" class="pg-generator__label">Length:</label>
+                            <input type="range" id="length" name="length" class="pg-generator__range" min="6" max="24"
+                                value="12" aria-valuemin="6" aria-valuemax="24" aria-valuenow="12" />
+                            <output for="length" id="length-value" class="pg-generator__range-value">12</output>
+                        </div>
+                    </fieldset>
+
+                    <!-- Character Type Options -->
+                    <fieldset class="pg-generator__fieldset">
+                        <legend class="pg-generator__legend">Include Characters</legend>
+                        <div class="pg-generator__options-grid">
+                            <div class="pg-generator__option">
+                                <input type="checkbox" id="uppercase" name="uppercase" class="pg-generator__checkbox"
+                                    checked />
+                                <label for="uppercase" class="pg-generator__checkbox-label">Uppercase (A-Z)</label>
+                            </div>
+                            <div class="pg-generator__option">
+                                <input type="checkbox" id="lowercase" name="lowercase" class="pg-generator__checkbox"
+                                    checked />
+                                <label for="lowercase" class="pg-generator__checkbox-label">Lowercase (a-z)</label>
+                            </div>
+                            <div class="pg-generator__option">
+                                <input type="checkbox" id="numbers" name="numbers" class="pg-generator__checkbox"
+                                    checked />
+                                <label for="numbers" class="pg-generator__checkbox-label">Numbers (0-9)</label>
+                            </div>
+                            <div class="pg-generator__option">
+                                <input type="checkbox" id="symbols" name="symbols" class="pg-generator__checkbox"
+                                    checked />
+                                <label for="symbols" class="pg-generator__checkbox-label">Symbols (!@#$...)</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Generate Button -->
+                    <div class="pg-generator__actions">
+                        <button type="submit" id="generate-btn" class="pg-generator__generate-btn">
+                            <i class="fas fa-key pg-generator__generate-icon" aria-hidden="true"></i>
+                            Generate Password
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Strength Meter -->
+                <div class="pg-generator__strength-container" aria-live="polite">
+                    <p class="pg-generator__strength-label">
+                        Password Strength:
+                        <span id="strength-label" class="pg-generator__strength-text">Medium</span>
+                    </p>
+                    <div class="pg-generator__strength-meter" aria-hidden="true">
+                        <div class="pg-generator__strength-bar"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about-section" class="pg-about" aria-labelledby="about-heading">
+                <h2 id="about-heading" class="pg-about__title">About This Tool</h2>
+                <p class="pg-about__description">
+                    The Password Generator helps you create strong, customizable passwords quickly.
+                    Choose length and character types, then click Generate. You can copy the password
+                    with one click. Built with accessibility and security best practices in mind.
+                </p>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects-section" class="pg-projects" aria-labelledby="projects-heading">
+                <h2 id="projects-heading" class="pg-projects__title">Other Projects</h2>
+                <ul class="pg-projects__list">
+                    <li class="pg-projects__item">
+                        <a href="#" target="_blank" rel="noopener">GitHub User Finder</a>
+                    </li>
+                    <li class="pg-projects__item">
+                        <a href="#" target="_blank" rel="noopener">AI Question Paper Generator</a>
+                    </li>
+                    <li class="pg-projects__item">
+                        <a href="#" target="_blank" rel="noopener">Notes & To-Do AI App</a>
+                    </li>
+                    <!-- Add more project links as needed -->
+                </ul>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact-section" class="pg-contact" aria-labelledby="contact-heading">
+                <h2 id="contact-heading" class="pg-contact__title">Contact</h2>
+                <p class="pg-contact__text">Feel free to reach out:</p>
+                <ul class="pg-contact__list">
+                    <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+                    <li>GitHub: <a href="https://github.com/YourUsername" target="_blank"
+                            rel="noopener">YourUsername</a></li>
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/YourProfile" target="_blank"
+                            rel="noopener">YourProfile</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="pg-footer">
+        <div class="container pg-footer__inner">
+            <div class="pg-footer__section pg-footer__about">
+                <h3 class="pg-footer__title">About</h3>
+                <p class="pg-footer__text">
+                    Password Generator is a lightweight, accessible tool to create strong passwords.
+                    Maintained by Ayan Ansari.
+                </p>
             </div>
-            <!-- include uppercase -->
-            <div class="option">
-                <label for="uppercase">Include Uppercase</label>
-                <input type="checkbox" id="uppercase" checked />
+            <div class="pg-footer__section pg-footer__links">
+                <h3 class="pg-footer__title">Links</h3>
+                <ul class="pg-footer__list">
+                    <li><a href="#generator-section">Generate</a></li>
+                    <li><a href="#about-section">About</a></li>
+                    <li><a href="#projects-section">Projects</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
             </div>
-            <!-- include lowercase -->
-            <div class="option">
-                <label for="lowercase">Include Lowercase</label>
-                <input type="checkbox" id="lowercase" checked />
+            <div class="pg-footer__section pg-footer__social">
+                <h3 class="pg-footer__title">Follow Me</h3>
+                <ul class="pg-footer__social-list">
+                    <li>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    </li>
+                    <!-- Add more social icons as needed -->
+                </ul>
             </div>
-            <!-- include numbers -->
-            <div class="option">
-                <label for="numbers">Include Numbers</label>
-                <input type="checkbox" id="numbers" checked />
-            </div>
-            <!-- include symbols -->
-            <div class="option">
-                <label for="symbols">Include Symbols</label>
-                <input type="checkbox" id="symbols" checked />
+            <div class="pg-footer__section pg-footer__contact">
+                <h3 class="pg-footer__title">Contact</h3>
+                <p class="pg-footer__text">
+                    Email: <a href="mailto:your-email@example.com">your-email@example.com</a>
+                </p>
             </div>
         </div>
-
-        <button id="generate-btn">
-            <i class="fas fa-key"></i>
-            Generate Password
-        </button>
-
-        <div class="strength-container">
-            <p>Password Strength: <span id="strength-label">Medium</span></p>
-
-            <div class="strength-meter">
-                <div class="strength-bar"></div>
-            </div>
+        <div class="pg-footer__bottom">
+            <p>&copy; 2025 Ayan Ansari. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 
-    <script src="index.js"></script>
+    <!-- Mobile nav toggle script -->
+    <script>
+        (function () {
+            const toggleBtn = document.querySelector(".pg-header__toggle");
+            const navMenu = document.getElementById("pg-nav-menu");
+            toggleBtn.addEventListener("click", () => {
+                const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+                toggleBtn.setAttribute("aria-expanded", String(!expanded));
+                navMenu.classList.toggle("pg-header__nav--open");
+            });
+        })();
+    </script>
+
+    <!-- Link your generator logic script; use defer to ensure DOM is ready -->
+    <script src="index.js" defer></script>
 </body>
 
 </html>

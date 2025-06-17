@@ -1,48 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form Validator</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A secure and accessible form validation tool for user registration. Validate usernames, emails, and passwords with real-time feedback.">
+    <meta name="keywords"
+        content="form validation, registration form, user signup, form validator, web development tool">
+    <meta name="author" content="Form Validator">
+    <meta property="og:title" content="Form Validator | Secure Registration Validation">
+    <meta property="og:description"
+        content="Professional form validation for user registration with real-time feedback.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#4285f4">
+
+    <title>Form Validator | Secure Registration Validation Tool</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 
 <body>
-    <div class="container">
-        <form id="registration-form">
-            <h1>Register</h1>
+  
+    <!-- Header with navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header__wrapper">
+                <a href="/" class="header__logo" aria-label="Form Validator Home">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    <span>FormValidator</span>
+                </a>
 
-            <!-- username -->
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter username" />
-                <small></small>
+                <button class="header__nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                    <span class="sr-only">Menu</span>
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+
+                <nav class="header__nav" id="primary-navigation" aria-label="Primary">
+                    <ul class="nav__list">
+                        <li><a href="/" class="nav__link nav__link--active">Home</a></li>
+                        <li><a href="#features" class="nav__link">Features</a></li>
+                        <li><a href="#examples" class="nav__link">Examples</a></li>
+                        <li><a href="#documentation" class="nav__link">Docs</a></li>
+                        <li><a href="#contact" class="nav__link">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-            <!-- email -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter email" />
-                <small></small>
+        </div>
+    </header>
+
+    <!-- Main content area -->
+    <main id="main-content" class="main-content">
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Secure Form Validation</h1>
+                    <p class="hero__subtitle">Professional-grade validation for user registration forms with real-time
+                        feedback</p>
+                </div>
             </div>
-            <!-- password -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter password" />
-                <small></small>
+        </section>
+
+        <!-- Demo section -->
+        <section class="demo-section">
+            <div class="container">
+                <div class="demo__header">
+                    <h2 class="demo__title">Try the Live Demo</h2>
+                    <p class="demo__subtitle">See real-time validation in action</p>
+                </div>
+
+                <div class="form-container">
+                    <form id="registration-form" class="registration-form" novalidate aria-label="Registration form">
+                        <h3 class="form__title">Create Your Account</h3>
+
+                        <!-- Username field -->
+                        <div class="form__group">
+                            <label for="username" class="form__label">Username</label>
+                            <div class="form__input-wrapper">
+                                <input type="text" id="username" class="form__input"
+                                    placeholder="Enter username (4-20 characters)"
+                                    aria-describedby="username-help username-error" required minlength="4"
+                                    maxlength="20" pattern="[a-zA-Z0-9]+">
+                                <i class="fas fa-user form__icon"></i>
+                            </div>
+                            <small id="username-help" class="form__help-text">Letters and numbers only, no
+                                spaces</small>
+                            <small id="username-error" class="form__error-text" aria-live="polite"></small>
+                        </div>
+
+                        <!-- Email field -->
+                        <div class="form__group">
+                            <label for="email" class="form__label">Email Address</label>
+                            <div class="form__input-wrapper">
+                                <input type="email" id="email" class="form__input" placeholder="Enter your email"
+                                    aria-describedby="email-help email-error" required>
+                                <i class="fas fa-envelope form__icon"></i>
+                            </div>
+                            <small id="email-help" class="form__help-text">We'll never share your email</small>
+                            <small id="email-error" class="form__error-text" aria-live="polite"></small>
+                        </div>
+
+                        <!-- Password field -->
+                        <div class="form__group">
+                            <label for="password" class="form__label">Password</label>
+                            <div class="form__input-wrapper">
+                                <input type="password" id="password" class="form__input"
+                                    placeholder="Create password (min 8 characters)"
+                                    aria-describedby="password-help password-error" required minlength="8">
+                                <i class="fas fa-lock form__icon"></i>
+                                <button type="button" class="form__toggle-password" aria-label="Show password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <small id="password-help" class="form__help-text">Minimum 8 characters with at least 1
+                                number</small>
+                            <small id="password-error" class="form__error-text" aria-live="polite"></small>
+                        </div>
+
+                        <!-- Confirm Password field -->
+                        <div class="form__group">
+                            <label for="confirmPassword" class="form__label">Confirm Password</label>
+                            <div class="form__input-wrapper">
+                                <input type="password" id="confirmPassword" class="form__input"
+                                    placeholder="Confirm your password" aria-describedby="confirm-help confirm-error"
+                                    required>
+                                <i class="fas fa-lock form__icon"></i>
+                                <button type="button" class="form__toggle-password" aria-label="Show password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <small id="confirm-help" class="form__help-text">Must match your password</small>
+                            <small id="confirm-error" class="form__error-text" aria-live="polite"></small>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="form__submit-btn">
+                            <span class="btn__text">Create Account</span>
+                            <i class="fas fa-arrow-right btn__icon" aria-hidden="true"></i>
+                        </button>
+                    </form>
+
+                    <div class="form__success hidden" id="form-success" role="alert" aria-live="assertive">
+                        <i class="fas fa-check-circle success__icon" aria-hidden="true"></i>
+                        <h3 class="success__title">Registration Successful!</h3>
+                        <p class="success__message">Thank you for registering. We've sent a confirmation email to your
+                            address.</p>
+                    </div>
+                </div>
             </div>
-            <!-- confirm password -->
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" placeholder="Confirm Password" />
-                <small></small>
+        </section>
+
+        <!-- Features section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section__title">Validation Features</h2>
+                <p class="section__subtitle">Professional-grade form validation capabilities</p>
+
+                <div class="features__grid">
+                    <article class="feature__card">
+                        <i class="fas fa-bolt feature__icon" aria-hidden="true"></i>
+                        <h3 class="feature__title">Real-time Feedback</h3>
+                        <p class="feature__desc">Instant validation as users type with clear error messages.</p>
+                    </article>
+
+                    <article class="feature__card">
+                        <i class="fas fa-mobile-alt feature__icon" aria-hidden="true"></i>
+                        <h3 class="feature__title">Mobile Optimized</h3>
+                        <p class="feature__desc">Works flawlessly on all devices with touch-friendly controls.</p>
+                    </article>
+
+                    <article class="feature__card">
+                        <i class="fas fa-universal-access feature__icon" aria-hidden="true"></i>
+                        <h3 class="feature__title">Accessible</h3>
+                        <p class="feature__desc">WCAG compliant with proper ARIA attributes and keyboard navigation.</p>
+                    </article>
+
+                    <article class="feature__card">
+                        <i class="fas fa-shield-alt feature__icon" aria-hidden="true"></i>
+                        <h3 class="feature__title">Secure Validation</h3>
+                        <p class="feature__desc">Client-side validation that complements server-side checks.</p>
+                    </article>
+                </div>
             </div>
-            <!-- submit btn -->
-            <button type="submit">Register</button>
-        </form>
-    </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__about">
+                    <h3 class="footer__title">About FormValidator</h3>
+                    <p>A professional form validation solution for modern web applications. Lightweight, accessible, and
+                        customizable.</p>
+                </div>
+
+                <div class="footer__links">
+                    <h3 class="footer__title">Quick Links</h3>
+                    <ul class="footer__list">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#examples">Examples</a></li>
+                        <li><a href="#documentation">Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h3 class="footer__title">Contact</h3>
+                    <address>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a
+                                href="mailto:support@formvalidator.com">support@formvalidator.com</a></p>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> San Francisco, CA</p>
+                    </address>
+                </div>
+
+                <div class="footer__social">
+                    <h3 class="footer__title">Connect</h3>
+                    <ul class="social__list">
+                        <li><a href="#" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                        <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"
+                                    aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; <span id="year"></span> FormValidator. All rights reserved.</p>
+                <ul class="footer__legal">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     <script src="index.js"></script>
+
 </body>
 
 </html>

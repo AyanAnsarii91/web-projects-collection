@@ -1,26 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bookmark Saver</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="BookmarkSaver - A simple tool to organize and save your favorite web bookmarks locally in your browser." />
+    <meta name="keywords" content="bookmark manager, save bookmarks, web tools, productivity tools" />
+    <meta name="author" content="Ayan Ansari" />
+    <meta name="theme-color" content="#4a6fa5" />
+
+    <!-- OpenGraph / Social Media Meta Tags -->
+    <meta property="og:title" content="BookmarkSaver - Organize Your Web Bookmarks" />
+    <meta property="og:description" content="A simple tool to organize and save your favorite web bookmarks locally in your browser." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourwebsite.com/bookmark-saver" />
+    <meta property="og:image" content="https://yourwebsite.com/images/bookmark-saver-preview.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <title>BookmarkSaver | Organize Your Web Bookmarks</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" media="all" />
+
+    <!-- No-JS fallback -->
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
 </head>
 
 <body>
-    <div class="app-container">
-        <h1>Bookmark Saver</h1>
-        <div class="input-container">
-            <input type="text" id="bookmark-name" placeholder="Bookmark Name" />
-            <input type="url" id="bookmark-url" placeholder="Bookmark URL" />
-            <button id="add-bookmark">Add Bookmark</button>
+    <!-- Skip to content link for accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="header__container container">
+            <div class="header__branding">
+                <a href="/" class="header__logo">
+                    <span class="header__logo-text">BookmarkSaver</span>
+                </a>
+            </div>
+            <nav class="header__nav" aria-label="Main navigation">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="/" class="header__nav-link">Home</a></li>
+                    <li class="header__nav-item"><a href="#features" class="header__nav-link">Features</a></li>
+                    <li class="header__nav-item"><a href="#how-it-works" class="header__nav-link">How It Works</a></li>
+                    <li class="header__nav-item"><a href="#contact" class="header__nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main id="main-content" class="main">
+        <section class="hero">
+            <div class="hero__container container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Organize Your Web Bookmarks</h1>
+                    <p class="hero__description">Save, manage, and access your favorite websites anytime with our simple bookmark saver tool.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bookmark-section container">
+            <div class="bookmark-section__intro">
+                <h2 class="bookmark-section__title">Your Bookmark Collection</h2>
+                <p class="bookmark-section__description">Add your favorite websites below to create a personalized collection.</p>
+            </div>
+
+            <div class="bookmark-form">
+                <form id="bookmark-form" class="bookmark-form__form">
+                    <div class="bookmark-form__group">
+                        <label for="bookmark-name" class="bookmark-form__label">Bookmark Name</label>
+                        <input type="text" id="bookmark-name" class="bookmark-form__input" placeholder="Enter bookmark name" required />
+                    </div>
+                    <div class="bookmark-form__group">
+                        <label for="bookmark-url" class="bookmark-form__label">Bookmark URL</label>
+                        <input type="url" id="bookmark-url" class="bookmark-form__input" placeholder="https://example.com" required />
+                    </div>
+                    <button type="submit" id="add-bookmark" class="bookmark-form__button">Add Bookmark</button>
+                </form>
+            </div>
+
+            <div class="bookmark-list__container">
+                <h3 class="bookmark-list__title">Saved Bookmarks</h3>
+                <ul id="bookmark-list" class="bookmark-list">
+                    <li class="bookmark-list__empty">No bookmarks saved yet. Add your first bookmark above!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="features-section__title">Key Features</h2>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-card__icon" aria-hidden="true">📌</div>
+                        <h3 class="feature-card__title">Easy Saving</h3>
+                        <p class="feature-card__description">Quickly save any website with just a name and URL.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-card__icon" aria-hidden="true">📱</div>
+                        <h3 class="feature-card__title">Responsive Design</h3>
+                        <p class="feature-card__description">Access your bookmarks from any device, anywhere.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-card__icon" aria-hidden="true">🔒</div>
+                        <h3 class="feature-card__title">Local Storage</h3>
+                        <p class="feature-card__description">Your bookmarks are saved in your browser for privacy.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="how-it-works__title">How It Works</h2>
+                <ol class="how-it-works__steps">
+                    <li class="how-it-works__step">Enter a name and URL for your bookmark</li>
+                    <li class="how-it-works__step">Click "Add Bookmark" to save it</li>
+                    <li class="how-it-works__step">Access your saved bookmarks anytime</li>
+                    <li class="how-it-works__step">Click on any bookmark to visit the site</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__section">
+                <h3 class="footer__title">BookmarkSaver</h3>
+                <p class="footer__description">A simple tool to organize and save your favorite web bookmarks.</p>
+            </div>
+            <div class="footer__section">
+                <h3 class="footer__title">Quick Links</h3>
+                <ul class="footer__links">
+                    <li><a href="/" class="footer__link">Home</a></li>
+                    <li><a href="#features" class="footer__link">Features</a></li>
+                    <li><a href="#how-it-works" class="footer__link">How It Works</a></li>
+                    <li><a href="#contact" class="footer__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h3 class="footer__title">Contact</h3>
+                <address class="footer__contact">
+                    <p>Email: <a href="mailto:contact@example.com" class="footer__link">contact@example.com</a></p>
+                    <p>Twitter: <a href="https://twitter.com/example" class="footer__link">@example</a></p>
+                </address>
+            </div>
         </div>
 
-        <ul id="bookmark-list"></ul>
-    </div>
+        <div class="footer__copyright">
+            <div class="container">
+                <p>&copy; <span id="year"></span> BookmarkSaver. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    <script src="index.js"></script>
+    <!-- JS to update year -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Main JavaScript -->
+    <!-- <script src="index.js" defer></script> -->
+     <script src="index.js"></script>
 </body>
-
 </html>

@@ -52,7 +52,9 @@ function createTransactionElement(transaction) {
     <span>
   
     ${formatCurrency(transaction.amount)}
-      <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>
+      <button class="delete-btn" onclick="removeTransaction(${
+        transaction.id
+      })">x</button>
     </span>
   `;
 
@@ -61,7 +63,10 @@ function createTransactionElement(transaction) {
 
 function updateSummary() {
   // 100, -50, 200, -200 => 50
-  const balance = transactions.reduce((acc, transaction) => acc + transaction.amount, 0);
+  const balance = transactions.reduce(
+    (acc, transaction) => acc + transaction.amount,
+    0
+  );
 
   const income = transactions
     .filter((transaction) => transaction.amount > 0)
@@ -97,3 +102,16 @@ function removeTransaction(id) {
 // initial render
 updateTransactionList();
 updateSummary();
+
+// Update copyright year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Mobile navigation toggle
+const navToggle = document.querySelector(".nav__toggle");
+const navList = document.querySelector(".nav__list");
+
+navToggle.addEventListener("click", () => {
+  const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
+  navToggle.setAttribute("aria-expanded", !isExpanded);
+  navList.classList.toggle("nav__list--visible");
+});

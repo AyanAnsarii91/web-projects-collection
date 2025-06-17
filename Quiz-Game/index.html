@@ -4,53 +4,190 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz Game</title>
-    <!-- <link rel="stylesheet" href="css/style.css" /> -->
-    <!-- <link rel="stylesheet" href="css/index.css"> -->
-    <link rel="stylesheet" href="css/style2.css">
+    <title>QuizTime - Interactive Quiz Game</title>
+    <meta name="description"
+        content="QuizTime: Test your knowledge with fun, interactive quizzes. Start the quiz, track your score, and see your results instantly." />
+    <meta name="keywords" content="quiz, interactive quiz, trivia, knowledge test, quiz game, QuizTime" />
+    <!-- CSS: retain style.css and index.css as preferred -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <!-- Font Awesome for icons (social, UI) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <div class="container">
-        <div class="screen active" id="start-screen">
-            <h1>Quiz Time!</h1>
-            <p>Test your knowledge with these fun questions</p>
-            <button id="start-btn">Start Quiz</button>
+    <!-- Skip link for accessibility -->
+    <!-- <a class="skip-link" href="#main-content">Skip to main content</a> -->
+
+    <!-- Header / Navbar -->
+    <header class="header" role="banner">
+        <div class="container header__inner">
+            <!-- Logo / Brand -->
+            <a href="#start-screen" class="header__logo">QuizTime</a>
+
+            <!-- Hamburger toggle button, visible only on small screens -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="primary-nav">
+                <!-- You can replace with an icon font or SVG for better visuals -->
+                &#9776;
+            </button>
+
+            <!-- Navigation links -->
+            <nav class="nav" aria-label="Primary navigation">
+                <ul class="nav__list" id="primary-nav">
+                    <li class="nav__item"><a href="#start-screen" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#quiz-screen" class="nav__link">Quiz</a></li>
+                    <li class="nav__item"><a href="#result-screen" class="nav__link">Results</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <div class="screen" id="quiz-screen">
-            <div class="quiz-header">
-                <h2 id="question-text">Question goes here</h2>
-                <div class="quiz-info">
-                    <p>
-                        Question <span id="current-question">1</span> of <span id="total-questions">5</span>
-                    </p>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Quiz Application Wrapper -->
+        <section id="quiz-app" class="quiz-app">
 
-                    <p>Score: <span id="score">0</span></p>
+            <div id="loading-spinner" class="loading-spinner screen--hidden" aria-hidden="true">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- Start Screen -->
+            <section id="start-screen" class="screen screen--active" aria-labelledby="start-heading" role="region">
+                <div class="container start-screen__inner">
+                    <h1 id="start-heading" class="start-screen__title">QuizTime!</h1>
+                    <p class="start-screen__subtitle">Test your knowledge with these fun questions</p>
+                    <button id="start-btn" class="btn btn--primary start-screen__button">Start Quiz</button>
                 </div>
-            </div>
+            </section>
 
-            <div id="answers-container" class="answers-container">
-                <!-- Answer buttons will be insterted here from our js code later at some point -->
-            </div>
+            <!-- Quiz Screen -->
+            <section id="quiz-screen" class="screen screen--hidden" aria-labelledby="quiz-heading" role="region"
+                aria-hidden="true">
+                <div class="container quiz-screen__inner">
+                    <header class="quiz-header">
+                        <h2 id="quiz-heading" class="quiz-header__title">Question</h2>
+                        <div class="quiz-info" aria-label="Quiz progress">
+                            <p class="quiz-info__text">Question <span id="current-question">1</span> of <span
+                                    id="total-questions">5</span></p>
+                            <p class="quiz-info__text">Score: <span id="score">0</span></p>
+                        </div>
+                    </header>
+                    <article class="quiz-question" aria-labelledby="question-text">
+                        <h3 id="question-text" class="quiz-question__text">Question goes here</h3>
+                    </article>
+                    <div id="answers-container" class="answers-container" role="group" aria-labelledby="question-text">
+                        <!-- Answer buttons are inserted here by JS -->
+                    </div>
+                    <div class="quiz-progress-bar" aria-hidden="true">
+                        <div id="progress" class="progress"></div>
+                    </div>
+                </div>
+            </section>
 
-            <div class="progress-bar">
-                <div id="progress" class="progress"></div>
+
+
+            <!-- Result Screen -->
+            <section id="result-screen" class="screen screen--hidden" aria-labelledby="result-heading" role="region"
+                aria-hidden="true">
+                <div class="container result-screen__inner">
+                    <h2 id="result-heading" class="result-screen__title">Quiz Results</h2>
+                    <div class="result-info" aria-live="polite">
+                        <p class="result-info__score">
+                            You scored <span id="final-score">0</span> out of <span id="max-score">5</span>
+                        </p>
+                        <div id="result-message" class="result-info__message">Good job!</div>
+                    </div>
+                    <button id="restart-btn" class="btn btn--secondary result-screen__button">Restart Quiz</button>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about" aria-labelledby="about-heading" role="region">
+            <div class="container about__inner">
+                <h2 id="about-heading" class="about__title">About QuizTime</h2>
+                <p class="about__text">
+                    QuizTime is a lightweight, interactive quiz application built with vanilla JavaScript, HTML5, and
+                    CSS3. It is designed to be fully responsive and accessible, so you can test your knowledge on any
+                    device.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact" aria-labelledby="contact-heading" role="region">
+            <div class="container contact__inner">
+                <h2 id="contact-heading" class="contact__title">Contact Us</h2>
+                <p class="contact__text">
+                    Have feedback or questions? Reach out to us:
+                </p>
+                <ul class="contact__list">
+                    <li class="contact__item">Email: <a href="mailto:support@quiztime.com"
+                            class="contact__link">support@quiztime.com</a></li>
+                    <li class="contact__item">Twitter: <a href="https://twitter.com/quiztime" class="contact__link"
+                            target="_blank" rel="noopener">twitter.com/quiztime</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer__inner">
+            <div class="footer__section footer__section--about" aria-labelledby="footer-about-heading">
+                <h3 id="footer-about-heading" class="footer__title">About</h3>
+                <p class="footer__text">
+                    QuizTime is developed by passionate developers aiming to deliver engaging and accessible quiz
+                    experiences. Built with modern web standards and best practices.
+                </p>
+            </div>
+            <div class="footer__section footer__section--links" aria-labelledby="footer-links-heading">
+                <h3 id="footer-links-heading" class="footer__title">Quick Links</h3>
+                <ul class="footer__links-list">
+                    <li class="footer__links-item"><a href="#start-screen" class="footer__link">Home</a></li>
+                    <li class="footer__links-item"><a href="#quiz-screen" class="footer__link">Quiz</a></li>
+                    <li class="footer__links-item"><a href="#result-screen" class="footer__link">Results</a></li>
+                    <li class="footer__links-item"><a href="#about" class="footer__link">About</a></li>
+                    <li class="footer__links-item"><a href="#contact" class="footer__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__section footer__section--social" aria-labelledby="footer-social-heading">
+                <h3 id="footer-social-heading" class="footer__title">Follow Us</h3>
+                <ul class="footer__social-list">
+                    <li class="footer__social-item">
+                        <a href="https://twitter.com/quiztime" class="footer__social-link" aria-label="Twitter"
+                            target="_blank" rel="noopener">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="footer__social-item">
+                        <a href="https://github.com/quiztime" class="footer__social-link" aria-label="GitHub"
+                            target="_blank" rel="noopener">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="footer__social-item">
+                        <a href="https://linkedin.com/company/quiztime" class="footer__social-link"
+                            aria-label="LinkedIn" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <div id="result-screen" class="screen">
-            <h1>Quiz Results</h1>
-            <div class="result-info">
-                <p>You scored <span id="final-score">0</span> out of <span id="max-score">5</span></p>
-
-                <div id="result-message">Good job!</div>
-            </div>
-            <button id="restart-btn">Restart Quiz</button>
+        <div class="footer__bottom">
+            <p>&copy; 2025 QuizTime. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 
-    <script src="Javascript/script.js"></script>
+    <!-- Link to JavaScript file -->
+    <script src="Javascript/script.js" defer></script>
 </body>
 
 </html>

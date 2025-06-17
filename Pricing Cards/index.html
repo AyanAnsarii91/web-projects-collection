@@ -4,7 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pricing Cards</title>
+  <title>Pricing Plans | YourCompanyName</title>
+  <meta name="description"
+    content="Discover our transparent pricing plans tailored for individuals, teams, and enterprises. Compare features and select the best subscription for your needs." />
+  <meta name="keywords"
+    content="pricing plans, subscription, features, pricing cards, basic plan, pro plan, enterprise plan, pricing" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -12,128 +16,213 @@
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>Choose Your Plan</h1>
-      <p>Select the perfect pricing plan for your needs</p>
-    </header>
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <div class="pricing-cards">
-      <!-- BASIC PLAN -->
-      <div class="card">
-        <div class="card-header">
-          <div class="plan-icon">
-            <i class="fas fa-rocket"></i>
-          </div>
-          <h3>Basic</h3>
-          <div class="price">
-            <span class="currency">$</span>
-            <span class="amount">9</span>
-            <span class="period">/month</span>
-          </div>
-          <p class="description">Perfect for individuals and small projects</p>
-        </div>
+  <header class="header">
+    <div class="header__inner container">
+      <a href="/" class="header__logo">YourLogo</a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="/projects" class="nav__link">Projects</a></li>
+          <li class="nav__item"><a href="/pricing" class="nav__link nav__link--active">Pricing</a></li>
+          <li class="nav__item"><a href="/about" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="/contact" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <div class="card-body">
-          <ul class="features">
-            <li><i class="fas fa-check"></i> 5 Projects</li>
-            <li><i class="fas fa-check"></i> 20GB Storage</li>
-            <li><i class="fas fa-check"></i> Basic Support</li>
-            <li><i class="fas fa-check"></i> Email Notifications</li>
-            <li class="disabled"><i class="fas fa-times"></i> Advanced Analytics</li>
-            <li class="disabled"><i class="fas fa-times"></i> Custom Domain</li>
-          </ul>
-        </div>
+  <main id="main-content">
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing" aria-labelledby="pricing-heading">
+      <div class="container pricing__inner">
+        <header class="pricing__header">
+          <h1 id="pricing-heading" class="pricing__title">Choose Your Plan</h1>
+          <p class="pricing__subtitle">Select the perfect pricing plan for your needs</p>
+        </header>
+        <div class="pricing-cards">
+          <!-- Basic Plan -->
+          <article class="pricing-cards__card pricing-cards__card--basic" aria-labelledby="basic-plan-title">
+            <div class="pricing-cards__header">
+              <div class="pricing-cards__icon" aria-hidden="true">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h2 id="basic-plan-title" class="pricing-cards__plan-name">Basic</h2>
+              <div class="pricing-cards__price">
+                <span class="pricing-cards__currency">$</span>
+                <span class="pricing-cards__amount">9</span>
+                <span class="pricing-cards__period">/month</span>
+              </div>
+              <p class="pricing-cards__description">Perfect for individuals and small projects</p>
+            </div>
+            <div class="pricing-cards__body">
+              <ul class="pricing-cards__features" aria-label="Basic plan features">
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> 5 Projects</li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> 20GB Storage
+                </li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Basic Support
+                </li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Email
+                  Notifications</li>
+                <li class="pricing-cards__feature-item pricing-cards__feature-item--disabled"><i class="fas fa-times"
+                    aria-hidden="true"></i> Advanced Analytics</li>
+                <li class="pricing-cards__feature-item pricing-cards__feature-item--disabled"><i class="fas fa-times"
+                    aria-hidden="true"></i> Custom Domain</li>
+              </ul>
+            </div>
+            <div class="pricing-cards__footer">
+              <a href="/signup?plan=basic" class="btn btn--primary pricing-cards__button" role="button">Get Started</a>
+            </div>
+          </article>
 
-        <div class="card-footer">
-          <button class="btn">Get Started</button>
+          <!-- Pro Plan (Most Popular) -->
+          <article class="pricing-cards__card pricing-cards__card--pro" aria-labelledby="pro-plan-title">
+            <div class="pricing-cards__badge">Most Popular</div>
+            <div class="pricing-cards__header">
+              <div class="pricing-cards__icon" aria-hidden="true">
+                <i class="fas fa-gem"></i>
+              </div>
+              <h2 id="pro-plan-title" class="pricing-cards__plan-name">Pro</h2>
+              <div class="pricing-cards__price">
+                <span class="pricing-cards__currency">$</span>
+                <span class="pricing-cards__amount">29</span>
+                <span class="pricing-cards__period">/month</span>
+              </div>
+              <p class="pricing-cards__description">Great for growing businesses and teams</p>
+            </div>
+            <div class="pricing-cards__body">
+              <ul class="pricing-cards__features" aria-label="Pro plan features">
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> 5 Projects</li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> 20GB Storage
+                </li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Basic Support
+                </li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Email
+                  Notifications</li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Advanced
+                  Analytics</li>
+                <li class="pricing-cards__feature-item pricing-cards__feature-item--disabled"><i class="fas fa-times"
+                    aria-hidden="true"></i> Custom Domain</li>
+              </ul>
+            </div>
+            <div class="pricing-cards__footer">
+              <a href="/signup?plan=pro" class="btn btn--accent pricing-cards__button" role="button">Get Started</a>
+            </div>
+          </article>
+
+          <!-- Enterprise Plan -->
+          <article class="pricing-cards__card pricing-cards__card--enterprise" aria-labelledby="enterprise-plan-title">
+            <div class="pricing-cards__header">
+              <div class="pricing-cards__icon" aria-hidden="true">
+                <i class="fas fa-building"></i>
+              </div>
+              <h2 id="enterprise-plan-title" class="pricing-cards__plan-name">Enterprise</h2>
+              <div class="pricing-cards__price">
+                <span class="pricing-cards__currency">$</span>
+                <span class="pricing-cards__amount">79</span>
+                <span class="pricing-cards__period">/month</span>
+              </div>
+              <p class="pricing-cards__description">For large companies and organizations</p>
+            </div>
+            <div class="pricing-cards__body">
+              <ul class="pricing-cards__features" aria-label="Enterprise plan features">
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> 5 Projects</li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> 20GB Storage
+                </li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Basic Support
+                </li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Email
+                  Notifications</li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Advanced
+                  Analytics</li>
+                <li class="pricing-cards__feature-item"><i class="fas fa-check" aria-hidden="true"></i> Custom Domain
+                </li>
+              </ul>
+            </div>
+            <div class="pricing-cards__footer">
+              <a href="/signup?plan=enterprise" class="btn btn--primary pricing-cards__button" role="button">Get
+                Started</a>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- PRO PLAN -->
-      <div class="card popular">
-        <div class="popular-badge">Most Popular</div>
-        <div class="card-header">
-          <div class="plan-icon">
-            <i class="fas fa-gem"></i>
-          </div>
-          <h3>Pro</h3>
-          <div class="price">
-            <span class="currency">$</span>
-            <span class="amount">29</span>
-            <span class="period">/month</span>
-          </div>
-          <p class="description">Great for growing businesses and teams</p>
-        </div>
-
-        <div class="card-body">
-          <ul class="features">
-            <li><i class="fas fa-check"></i> 5 Projects</li>
-            <li><i class="fas fa-check"></i> 20GB Storage</li>
-            <li><i class="fas fa-check"></i> Basic Support</li>
-            <li><i class="fas fa-check"></i> Email Notifications</li>
-            <li><i class="fas fa-check"></i> Advanced Analytics</li>
-            <li class="disabled"><i class="fas fa-times"></i> Custom Domain</li>
-          </ul>
-        </div>
-
-        <div class="card-footer">
-          <button class="btn btn-accent">Get Started</button>
+    <!-- Testimonial Section -->
+    <section id="testimonials" class="testimonials" aria-labelledby="testimonials-heading">
+      <div class="container testimonials__inner">
+        <header class="testimonials__header">
+          <h2 id="testimonials-heading" class="testimonials__title">What Our Customers Say</h2>
+        </header>
+        <div class="testimonials__list">
+          <article class="testimonial">
+            <blockquote class="testimonial__quote">
+              <i class="fas fa-quote-left" aria-hidden="true"></i>
+              <p>Switching to this service was one of the best decisions we've made. The pricing is transparent and the
+                features are exactly what we needed.</p>
+            </blockquote>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Photo of Sarah Johnson" />
+              </div>
+              <div class="testimonial__info">
+                <h3 class="testimonial__name">Sarah Johnson</h3>
+                <p class="testimonial__role">Marketing Director</p>
+              </div>
+            </div>
+          </article>
+          <!-- Additional testimonials can be added similarly -->
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- ENTERPRISE PLAN -->
-      <div class="card">
-        <div class="card-header">
-          <div class="plan-icon">
-            <i class="fas fa-building"></i>
-          </div>
-          <h3>Enterprise</h3>
-          <div class="price">
-            <span class="currency">$</span>
-            <span class="amount">79</span>
-            <span class="period">/month</span>
-          </div>
-          <p class="description">For large companies and organizations</p>
-        </div>
-
-        <div class="card-body">
-          <ul class="features">
-            <li><i class="fas fa-check"></i> 5 Projects</li>
-            <li><i class="fas fa-check"></i> 20GB Storage</li>
-            <li><i class="fas fa-check"></i> Basic Support</li>
-            <li><i class="fas fa-check"></i> Email Notifications</li>
-            <li><i class="fas fa-check"></i> Advanced Analytics</li>
-            <li><i class="fas fa-check"></i> Custom Domain</li>
-          </ul>
-        </div>
-
-        <div class="card-footer">
-          <button class="btn">Get Started</button>
-        </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__section footer__section--about" aria-labelledby="footer-about-heading">
+        <h3 id="footer-about-heading" class="footer__title">About Us</h3>
+        <p class="footer__text">YourCompanyName is dedicated to providing transparent and flexible pricing plans that
+          scale with your needs. We strive for excellence in service and support.</p>
+      </div>
+      <div class="footer__section footer__section--links" aria-labelledby="footer-links-heading">
+        <h3 id="footer-links-heading" class="footer__title">Quick Links</h3>
+        <ul class="footer__links-list">
+          <li class="footer__links-item"><a href="/" class="footer__link">Home</a></li>
+          <li class="footer__links-item"><a href="/projects" class="footer__link">Projects</a></li>
+          <li class="footer__links-item"><a href="/pricing" class="footer__link">Pricing</a></li>
+          <li class="footer__links-item"><a href="/about" class="footer__link">About</a></li>
+          <li class="footer__links-item"><a href="/contact" class="footer__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__section footer__section--contact" aria-labelledby="footer-contact-heading">
+        <h3 id="footer-contact-heading" class="footer__title">Contact</h3>
+        <address class="footer__contact-info">
+          <p>1234 Street Name, City, State, ZIP</p>
+          <p>Email: <a href="mailto:info@yourcompany.com" class="footer__link">info@yourcompany.com</a></p>
+          <p>Phone: <a href="tel:+1234567890" class="footer__link">+1 (234) 567-890</a></p>
+        </address>
+      </div>
+      <div class="footer__section footer__section--social" aria-labelledby="footer-social-heading">
+        <h3 id="footer-social-heading" class="footer__title">Follow Us</h3>
+        <ul class="footer__social-list">
+          <li class="footer__social-item"><a href="#" class="footer__social-link" aria-label="Twitter"><i
+                class="fab fa-twitter" aria-hidden="true"></i></a></li>
+          <li class="footer__social-item"><a href="#" class="footer__social-link" aria-label="Facebook"><i
+                class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+          <li class="footer__social-item"><a href="#" class="footer__social-link" aria-label="LinkedIn"><i
+                class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+          <li class="footer__social-item"><a href="#" class="footer__social-link" aria-label="Instagram"><i
+                class="fab fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
       </div>
     </div>
-
-    <div class="testimonial">
-      <div class="quote">
-        <i class="fas fa-quote-left"></i>
-        <p>
-          Switching to this service was one of the best decisions we've made. The pricing is
-          transparent and the features are exactly what we needed.
-        </p>
-
-        <div class="author">
-          <div class="avatar">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" />
-          </div>
-          <div class="info">
-            <h4>Sarah Johnson</h4>
-            <p>Marketing Director</p>
-          </div>
-        </div>
-      </div>
+    <div class="footer__bottom">
+      <p>&copy; 2025 YourCompanyName. All rights reserved.</p>
     </div>
-  </div>
+  </footer>
 </body>
-
+<script src="index.js"></script>
 </html>

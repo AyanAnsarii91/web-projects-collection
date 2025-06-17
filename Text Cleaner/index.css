@@ -1,0 +1,533 @@
+/* ===========================================================
+   TextCleaner Enhanced CSS
+   - Dark theme with CSS variables for easy theming
+   - Responsive layout: mobile, tablet, desktop
+   - Smooth animations and transitions
+   - Elegant hover/focus effects
+   - Google Fonts import for a polished look
+   - Custom WebKit scrollbar
+   - Modular, maintainable, scalable
+   =========================================================== */
+
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap');
+
+/* 2. CSS Variables (Theming) */
+:root {
+    /* Color Palette */
+    --color-bg: #121212;
+    --color-surface: #1e1e1e;
+    --color-primary: #00ffc8;
+    --color-primary-hover: #00e0b0;
+    --color-secondary: #f0f0f0;
+    --color-muted: #ccc;
+    --color-error: #ff6b6b;
+    --color-success: #4caf50;
+
+    /* Typography */
+    --font-sans: 'Inter', sans-serif;
+    --font-heading: 'Roboto Slab', serif;
+    --font-size-base: 1rem;
+    /* 16px */
+    --font-size-lg: 1.125rem;
+    /* 18px */
+    --font-size-xl: 1.5rem;
+    /* 24px */
+    --line-height-base: 1.6;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease-in-out;
+    --transition-medium: 0.4s ease-in-out;
+    --transition-slow: 0.6s ease-in-out;
+
+    /* Breakpoints */
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+}
+
+/* 3. Global Reset & Base Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+    /* 16px */
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-secondary);
+    font-family: var(--font-sans);
+    line-height: var(--line-height-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+    animation: fadeIn 0.5s var(--transition-fast) ease-out;
+}
+
+/* 4. Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.03);
+        opacity: 0.8;
+    }
+}
+
+/* 5. Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+p, label, span, button, textarea, div {
+    font-size: var(--font-size-base);
+}
+
+/* 6. Utility Classes */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* 7. Navbar & Header */
+.site-header {
+    width: 100%;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-xl);
+    animation: fadeIn 0.4s var(--transition-fast) ease-out;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.navbar__brand a {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.navbar__brand a:hover,
+.navbar__brand a:focus {
+    color: var(--color-primary-hover);
+}
+
+/* 8. Main Content */
+.main-content {
+    width: 100%;
+    flex: 1;
+    animation: fadeIn 0.5s var(--transition-medium) ease-out;
+}
+
+.tool-section {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    animation: fadeIn 0.5s var(--transition-medium) ease-out;
+}
+
+/* 9. Tool Section Header */
+.tool-section__header h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+}
+
+/* Optional subtle underline effect */
+.tool-section__header h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary);
+    margin: var(--spacing-sm) auto 0;
+    border-radius: var(--radius-sm);
+    transition: width var(--transition-medium);
+}
+
+.tool-section__header h1:hover::after {
+    width: 100px;
+}
+
+/* 10. Input Area */
+.tool-section__input {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.tool-section__textarea {
+    width: 100%;
+    height: 150px;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    background: var(--color-bg);
+    color: var(--color-secondary);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    resize: vertical;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tool-section__textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-hover);
+    box-shadow: 0 0 0 3px rgba(0, 255, 200, 0.2);
+}
+
+/* 11. Actions (Buttons) */
+.tool-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: flex-start;
+}
+
+.btn {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    background: var(--color-primary);
+    color: var(--color-bg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Ripple effect on click */
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.btn:active::after {
+    transform: scale(3);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Primary & Secondary Variants */
+.btn--primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn--secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn--secondary:hover,
+.btn--secondary:focus {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Disabled state example */
+.btn:disabled {
+    background: var(--color-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 12. Output Box */
+.tool-section__output {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.output-box {
+    width: 100%;
+    min-height: 100px;
+    padding: var(--spacing-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    color: var(--color-secondary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.output-box:focus-within {
+    box-shadow: 0 0 0 3px rgba(0, 255, 200, 0.2);
+}
+
+/* 13. Stats Display */
+.stats {
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-base);
+    color: var(--color-muted);
+    line-height: var(--line-height-base);
+}
+
+/* 14. Footer */
+.site-footer {
+    width: 100%;
+    background: var(--color-surface);
+    color: var(--color-muted);
+    text-align: center;
+    padding: var(--spacing-md);
+    margin-top: auto;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    animation: fadeIn 0.4s var(--transition-fast) ease-out;
+}
+
+.site-footer__content p {
+    margin: 0;
+}
+
+/* 15. Responsive Design */
+/* Small devices */
+@media (max-width: var(--breakpoint-sm)) {
+    body {
+        padding: var(--spacing-md);
+    }
+
+    .tool-section {
+        padding: var(--spacing-md);
+    }
+
+    .navbar, .site-footer {
+        padding: var(--spacing-sm);
+    }
+
+    .navbar__brand a {
+        font-size: var(--font-size-lg);
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        flex: 1 1 100%;
+    }
+}
+
+/* Medium devices */
+@media (min-width: var(--breakpoint-sm)) and (max-width: var(--breakpoint-md)) {
+    .tool-section {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* Large devices */
+@media (min-width: var(--breakpoint-md)) {
+    .container {
+        max-width: 700px;
+    }
+}
+
+/* Extra large */
+@media (min-width: var(--breakpoint-lg)) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+/* 16. Custom Scrollbar (WebKit) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: var(--radius-lg);
+    border: 3px solid var(--color-surface);
+    transition: background-color var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-hover);
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-surface);
+}
+
+/* 17. Accessibility & Focus */
+a:focus,
+button:focus,
+textarea:focus {
+    outline: 3px solid rgba(0, 255, 200, 0.4);
+    outline-offset: 2px;
+}
+
+/* 18. Additional Utility Animations */
+/* Subtle pulse on call-to-action, e.g., if you want to draw attention */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* 19. Alert/Notification Examples */
+/* If you plan to show messages */
+.alert {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-sm) 0;
+    font-size: var(--font-size-base);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.alert--success {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid var(--color-success);
+    color: var(--color-success);
+}
+
+.alert--error {
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid var(--color-error);
+    color: var(--color-error);
+}
+
+/* 20. Smooth transitions for interactive elements */
+a,
+button,
+input,
+textarea {
+    transition: all var(--transition-fast) ease-in-out;
+}
+
+/* 21. Link Styles (if any) */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+/* 22. Optional: Dark/light theme toggle support */
+/* If you later add a light theme, you can override variables in a .light-theme class */
+/*
+.light-theme {
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-primary: #0066cc;
+  --color-primary-hover: #005bb5;
+  --color-secondary: #121212;
+  --color-muted: #555;
+}
+*/
+
+/* 23. Debug outlines (uncomment in dev) */
+/*
+* {
+  outline: 1px solid rgba(255,0,0,0.1);
+}
+*/
+
+/* End of TextCleaner Enhanced CSS */

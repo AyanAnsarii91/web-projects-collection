@@ -1,121 +1,425 @@
-/* Basic Reset */
-@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+/* ==================================================================
+   Optimized Professional CSS for ColorPaletteGenerator
+   Description: Modern, responsive, and visually stunning design
+   using CSS variables, animations, hover effects, and Google Fonts.
+   ================================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+/* ------------------------------------------------------------------
+   1. CSS Reset / Box-Sizing
+   ------------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 body {
-    /* background-color: #2BF111; */
-    background: linear-gradient(135deg, #83a8df, #c3cfe2);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  font-family: var(--font-body);
+  background: var(--color-bg-gradient);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-speed) var(--easing);
+}
+a:hover, a:focus {
+  color: var(--color-primary);
+}
+ul, ol {
+  list-style: none;
+}
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  display: block;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+input, textarea {
+  font-family: inherit;
 }
 
+/* ------------------------------------------------------------------
+   2. CSS Variables (Theming)
+   ------------------------------------------------------------------ */
+:root {
+  /* Color Palette */
+  --color-primary: #667eea;
+  --color-primary-dark: #5a67d8;
+  --color-secondary: #764ba2;
+  --color-accent: #f6ad55;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f7fafc;
+  --color-bg-gradient: linear-gradient(135deg, #83a8df, #c3cfe2);
+  --color-text: #2d3748;
+  --color-text-light: #4a5568;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+
+  /* Spacing & Layout */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing: 1rem;
+  --spacing-lg: 2rem;
+  --max-width: 800px;
+
+  /* Transitions & Animations */
+  --transition-speed: 0.3s;
+  --easing: ease-in-out;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0 !important;
+    transition-duration: 0 !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   3. Utility Classes
+   ------------------------------------------------------------------ */
 .container {
-    background-color: #fff;
-    border-radius: 1rem;
-    padding: 2rem;
-    width: 100%;
-    max-width: 800px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
+}
+.text-center {
+  text-align: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hidden {
+  display: none !important;
+}
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing);
+  z-index: 100;
+  transition: top var(--transition-speed) var(--easing);
+}
+.skip-link:focus {
+  top: var(--spacing);
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #333;
-    position: relative;
-    padding-bottom: 0.5rem;
+/* ------------------------------------------------------------------
+   4. Button Styles
+   ------------------------------------------------------------------ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-lg);
+  transition: background-color var(--transition-speed) var(--easing), transform var(--transition-speed) var(--easing), box-shadow var(--transition-speed) var(--easing);
+}
+.button--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+.button--primary:hover, .button--primary:focus {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-h1::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    height: 3px;
-    background-color: #667eea;
-    border-radius: 2px;
+/* Beautiful Navbar Styles */
+.site-header {
+  background-color: var(--color-primary);
+  padding: var(--spacing) 0;
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-#generate-btn {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 500;
-    margin-bottom: 2rem;
-    font-size: 1rem;
+.site-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#generate-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(102, 126, 234, 0.3);
+.site-header__logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
 }
 
-#generate-btn:active {
-    transform: translateY(0);
+.site-header__nav {
+  display: flex;
 }
 
-.palette-container {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+.site-header__nav-list {
+  display: flex;
+  gap: var(--spacing-lg);
 }
 
-.color-box {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+.site-header__nav-link {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-speed) var(--easing);
 }
 
-.color-box:hover {
-    transform: translateY(-5px);
+.site-header__nav-link:hover,
+.site-header__nav-link:focus {
+  background-color: var(--color-primary-dark);
 }
 
-.color {
-    height: 120px;
-    cursor: pointer;
-}
-
-.color-info {
-    background-color: #fff;
-    padding: 0.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.9rem;
-}
-
-.hex-value {
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.copy-btn {
-    cursor: pointer;
-    color: #64748b;
-    transition: color 0.2s;
-}
-
-.copy-btn:hover {
-    color: #667eea;
+/* Responsive Navbar */
+.nav-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-    .palette-container {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    }
+  .site-header__nav {
+    display: none;
+    flex-direction: column;
+    gap: var(--spacing);
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: var(--spacing);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .site-header__nav.show {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+
+/* ------------------------------------------------------------------
+   5. Hero Section
+   ------------------------------------------------------------------ */
+.hero-section {
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  color: var(--color-white);
+  animation: fadeInUp 0.8s var(--easing) both;
+}
+.hero-section__title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+.hero-section__subtitle {
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ------------------------------------------------------------------
+   6. Palette Section
+   ------------------------------------------------------------------ */
+.palette-section {
+  padding: var(--spacing-lg) 0;
+}
+.palette-section__grid, .palette-container {
+  display: grid;
+  gap: var(--spacing);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+.color-box {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-speed) var(--easing), box-shadow var(--transition-speed) var(--easing);
+}
+.color-box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.color-box__color {
+  width: 100%;
+  padding-top: 100%; /* 1:1 ratio for square */
+  position: relative;
+}
+.color-box__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing);
+  background-color: var(--color-bg-alt);
+}
+.color-box__hex {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
+.color-box__copy-btn {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: color var(--transition-speed) var(--easing), transform var(--transition-speed) var(--easing);
+}
+.color-box__copy-btn:hover, .color-box__copy-btn:focus {
+  color: var(--color-primary);
+  transform: scale(1.2);
+}
+
+/* ------------------------------------------------------------------
+   7. Features Section
+   ------------------------------------------------------------------ */
+.features-section {
+  padding: var(--spacing-lg) 0;
+}
+.features-section__title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing);
+}
+.features-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 var(--spacing);
+}
+.features-section__list li {
+  font-size: 1rem;
+  color: var(--color-text);
+  position: relative;
+  padding-left: 1.5rem;
+}
+.features-section__list li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+@media (min-width: 600px) {
+  .features-section__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .features-section__list li {
+    flex: 1 1 45%;
+  }
+}
+
+/* ------------------------------------------------------------------
+   8. Footer Styles
+   ------------------------------------------------------------------ */
+.site-footer {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--spacing-lg) 0;
+}
+.site-footer__container {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+@media (min-width: 768px) {
+  .site-footer__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.site-footer__title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-sm);
+}
+.site-footer__section p,
+.site-footer__section a {
+  font-size: 0.875rem;
+  color: var(--color-white);
+  transition: color var(--transition-speed) var(--easing);
+}
+.site-footer__section a:hover, .site-footer__section a:focus {
+  color: var(--color-accent);
+}
+.site-footer__links li {
+  margin-bottom: var(--spacing-sm);
+}
+.site-footer__bottom {
+  text-align: center;
+  margin-top: var(--spacing);
+  font-size: 0.875rem;
+}
+
+/* ------------------------------------------------------------------
+   9. Animations / Keyframes
+   ------------------------------------------------------------------ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------------------------------------------
+   10. Focus States
+   ------------------------------------------------------------------ */
+:focus {
+  outline: 2px dashed var(--color-accent);
+  outline-offset: 2px;
 }
