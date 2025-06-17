@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Kanban Board</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div class="container">
+        <h1>Enhanced Kanban Board</h1>
+        <div class="board">
+            <div class="list" id="list1">
+                <h2>To Do <span class="count"></span></h2>
+                <div class="card" draggable="true" id="card1">Wash Dishes<span class="delete-btn"
+                        onclick="removeCard(this)">✖</span></div>
+                <div class="card" draggable="true" id="card2">Buy Groceries<span class="delete-btn"
+                        onclick="removeCard(this)">✖</span></div>
+                <button class="add-btn" onclick="addCard('list1')">+ Add Card</button>
+                <button class="delete-all">Delete All</button>
+            </div>
+            <div class="list" id="list2">
+                <h2>In Progress <span class="count"></span></h2>
+                <div class="card" draggable="true" id="card3">Learn to code<span class="delete-btn"
+                        onclick="removeCard(this)">✖</span></div>
+                <button class="add-btn" onclick="addCard('list2')">+ Add Card</button>
+
+            </div>
+            <div class="list" id="list3">
+                <h2>Done <span class="count"></span></h2>
+                <button class="add-btn" onclick="addCard('list3')">+ Add Card</button>
+            </div>
+        </div>
+        <!-- Custom Edit Modal -->
+        <div id="editModal" style="display:none;">
+            <div class="modal-content">
+                <textarea id="editTextarea" placeholder="Edit your task here..."></textarea>
+                <div class="buttons">
+                    <button id="cancelEditBtn" class="cancel-btn">Cancel</button>
+                    <button id="saveEditBtn" class="save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>
